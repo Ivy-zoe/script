@@ -13,7 +13,7 @@
 
 
 ## 参数设定
-
+```
 WORK_DIR=/opt/soft/mirror_project
 脚本的目录
 
@@ -34,7 +34,7 @@ REMI=/data/mirrors/remi/6
 站点（这里并没有太大的作用后续版本会用到）
 TUNA=mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
-
+```
 ## 使用方法
 
 
