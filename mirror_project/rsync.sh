@@ -42,10 +42,8 @@ function Rsync_Centos7(){
         rsync -avz --exclude-from=$Config_DIR/centos7.list rsync://mirrors.tuna.tsinghua.edu.cn/centos/7.5.1804/os/x86_64/ $CentOS7
         if [ -d $CentOS7/repodata ];then
             createrepo --update $CentOS7/repodata
-            echo "Centos7 mirrors" >$CentOS7/index.html
         else
             createrepo $CentOS7
-            echo "Centos7 mirrors" >$CentOS7/index.html
         fi
 }
 
@@ -53,10 +51,8 @@ function Rsync_Centos6(){
         rsync -avz --exclude-from=$Config_DIR/centos6.list rsync://mirrors.tuna.tsinghua.edu.cn/centos/6.10/os/x86_64/  $CentOS6
         if [ -d $CentOS6/repodata ];then
             createrepo --update $CentOS6/repodata
-            echo "Centos6 mirrors" >$CentOS6/index.html
         else
             createrepo $CentOS6
-            echo "Centos6 mirrors" >$CentOS6/index.html
         fi
 }
 
@@ -64,10 +60,8 @@ function Rsync_epel7(){
         rsync -avz --exclude-from=$Config_DIR/epel7.list  rsync://mirrors.tuna.tsinghua.edu.cn/epel/7/x86_64/ $EPEL7
         if [ -d $EPEL7/repodata ];then
             createrepo --update $EPEL7/repodata
-            echo "Epel For Centos7" > $EPEL7/index.html
         else
             createrepo $EPEL7
-            echo "Epel For Centos7" > $EPEL7/index.html
         fi
 }
 
@@ -76,10 +70,8 @@ function Rsync_epel6(){
         rsync -avz --exclude-from=$Config_DIR/epel6.list  rsync://mirrors.tuna.tsinghua.edu.cn/epel/7/x86_64/ $EPEL6
         if [ -d $EPEL6/repodata ];then
             createrepo --update $EPEL6/repodata
-            echo "Epel For Centos6" > $EPEL6/index.html
         else
             createrepo $EPEL6
-            echo "Epel for Centos6" > $EPEL6/index.html
         fi
 }
 
@@ -96,10 +88,8 @@ function Rsync_Mongodb_For_Centos6(){
         rsync -avz --exclude-from=$Config_DIR/mongodb3.6.list rsync://mirrors.tuna.tsinghua.edu.cn/mongodb/yum/el6-3.6/ $MONGODB
         if [ -d $MONGODB/repodata ];then
             createrepo --update $MONGODB/repodata
-            echo "mongodb3.6 for CentOS6"> $MONGODB/index.html
         else
             createrepo $MONGODB
-            echo "mongodb3.6 for CentOS6"> $MONGODB/index.html
         fi
 }
 
@@ -107,10 +97,8 @@ function Rysnc_Mariadb_For_CentOS7(){
         rsync -avz  rsync://mirrors.tuna.tsinghua.edu.cn/mariadb/mariadb-10.3.8/yum/centos73-amd64/ $Mariadb
         if [ -d $Mariadb/repodata ];then
             createrepo --update $Mariadb/repodata
-            echo "mariadb.10.3.8 for CentOS7"> $Mariadb/index.html
         else
             createrepo $Mariadb
-            echo "mariadb10.3.8 for CentOS7"> $Mariadb/index.html
         fi
 }
 
@@ -118,10 +106,8 @@ function Rsync_Remi_For_Centos6(){
         rsync -avz --exclude-from=$Config_DIR/remi.list rsync://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/ $REMI
         if [ -d $REMI/repodata ];then
             createrepo --update $REMI/repodata
-            echo "REMI for CentOS7"> $REMI/index.html
         else
             createrepo $MEMI
-            echo "REMI for CentOS7"> $REMI/index.html
         fi
 }
 
