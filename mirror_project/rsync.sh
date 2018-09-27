@@ -105,13 +105,13 @@ function Rsync_Mongodb_For_Centos6(){
 }
 
 function Rysnc_Mariadb_For_CentOS7(){
-        rsync -avz --exclude-from=$Config_DIR/mariadb10.3.list rsync://mirrors.tuna.tsinghua.edu.cn/mariadb/mariadb-10.3.8/yum/centos73-amd64/ $Maridb
+        rsync -avz  rsync://mirrors.tuna.tsinghua.edu.cn/mariadb/mariadb-10.3.8/yum/centos73-amd64/ $Mariadb
         if [ -d $Mariadb/repodata ];then
             createrepo --update $Mariadb/repodata
-            echo "mariadb.10.3.8 for CentOS7"> $MONGODB/index.html
+            echo "mariadb.10.3.8 for CentOS7"> $Mariadb/index.html
         else
-            createrepo $MONGODB
-            echo "mariadb10.3.8 for CentOS7"> $MONGODB/index.html
+            createrepo $Mariadb
+            echo "mariadb10.3.8 for CentOS7"> $Mariadb/index.html
         fi
 }
 
