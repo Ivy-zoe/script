@@ -23,7 +23,6 @@ USTC=mirrors.ustc.edu.cn
 # Check Software
 function Check_Software(){
     type rsync >/dev/null 2>&1 || { echo >&2 "I require rsync but it's not installed.  Aborting."; yum install rsync -y; }
-    type bwm-ng >/dev/null 2>&1 || { echo >&2 "I require bwm-ng but it's not installed.  Aborting."; yum install bwm-ng -y; }
     type createrepo >/dev/null 2>&1 || { echo >&2 "I require createrepo but it's not installed.  Aborting."; yum install createrepo -y; }
 }
 # check dir
