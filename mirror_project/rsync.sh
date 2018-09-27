@@ -28,7 +28,6 @@ REDSLEVE=http://ftp.redsleeve.org/pub/steam/
 function Check_Software(){
     type rsync >/dev/null 2>&1 || { echo >&2 "I require rsync but it's not installed.  Aborting."; yum install rsync -y; }
     type createrepo >/dev/null 2>&1 || { echo >&2 "I require createrepo but it's not installed.  Aborting."; yum install createrepo -y; }
-    type wget >/dev/null 2>&1 || { echo >&2 "I require createrepo but it's not installed.  Aborting."; yum install wget -y; }
 }
 # check dir
 function Check_Work_Dir(){
@@ -132,13 +131,14 @@ function Rsync_Remi_For_Centos6(){
         fi
 }
 
-function Wget_Glibc_For_CentOS6(){
-        wget ftp-url --mirror -p --convert-links -P $GLIBC $REDSLEVE
-        if [ -d $GLIBC/repodata ]; then
+function Curl_Glibc_For_CentOS6(){
+        cd $GLIBC
+        curl $REDSLEVE >glibc.html &&cat glibc.html |awk -F '"' '{print $8}' |grep -v ^$|while read line; do curl -O ${REDSLEVE}${line}; done
+        if [ -d $GLIBC/repodata ];then
             createrepo --update $GLIBC/repodata
         else
             createrepo $GLIBC/repodata
-        fi
+        fi  
 }
 
 function List(){
@@ -166,7 +166,7 @@ function List(){
     echo "+---------------------------------------------------------------------------------------+"
     echo "| 10      zabbix7       $TUNA         $ZABBIX7"
     echo "+---------------------------------------------------------------------------------------+" 
-    echo "|                 Wget "
+    echo "|                 Curl "
     echo "+---------------------------------------------------------------------------------------+" 
     echo "| 11      glibc        $REDSLEVE         $GLIBC"  
     echo "+---------------------------------------------------------------------------------------+" 
@@ -179,9 +179,7 @@ case $1 in
         Check_Work_Dir
         Check_Software
         Check_Data_Dir
-
         ;;
-
     nginx )
         Rsync_Nginx_For_Centos6
         ;;
@@ -191,7 +189,6 @@ case $1 in
     epel7 )
         Rsync_epel7
         ;;
-
     mongodb )
         Rsync_Mongodb_For_Centos6
         ;;
@@ -209,13 +206,12 @@ case $1 in
         ;;
     zabbix6 )
         Rsync_Zabbix_For_Centos6
-
     ;;
     zabbix7 )
         Rsync_Zabbix_For_Centos7
     ;;
     glibc )
-        Wget_Glibc_For_CentOS6
+        Curl_Glibc_For_CentOS6
     ;;
     all )
         Rsync_Centos6
@@ -228,12 +224,11 @@ case $1 in
         Rysnc_Mariadb_For_CentOS7
         Rsync_Zabbix_For_Centos7
         Rsync_Zabbix_For_Centos6
-
+        Curl_Glibc_For_CentOS6
         ;;
     list )
         List
     ;;
-
     *)
 clear
 echo "+------------------------------------------------------------------------+"
@@ -250,5 +245,4 @@ echo "| You can use the list to see which images can be synchronized."
 echo "+------------------------------------------------------------------------+"
 echo "|Use the corresponding image name to sync, or use all to sync all"
 echo "+------------------------------------------------------------------------+"
-
 esac

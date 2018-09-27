@@ -9,6 +9,7 @@
 需要的软件
 - rsync
 - creatrepo
+- curl
 
 
 
