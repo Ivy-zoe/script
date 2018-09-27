@@ -8,22 +8,27 @@ WORK_DIR=/opt/soft/mirror_project
 Config_DIR=/opt/soft/mirror_project/config
 DATA_DIR=/data/mirrors
 
-EPEL6=/data/mirrors/epel/6
-EPEL7=/data/mirrors/epel/7
-CentOS7=/data/mirrors/centos/7
-CentOS6=/data/mirrors/centos/6
+EPEL6=$DATA_DIR/epel/6
+EPEL7=$DATA_DIR/epel/7
+CentOS7=$DATA_DIR/centos/7
+CentOS6=$DATA_DIR/centos/6
 
-MONGODB=/data/mirrors/mongodb/6
-Mariadb=/data/mirrors/mariadb/7
-Nginx=/data/mirrors/nginx/6
-REMI=/data/mirrors/remi/6
+MONGODB=$DATA_DIR/mongodb/6
+Mariadb=$DATA_DIR/mariadb/7
+Nginx=$DATA_DIR/nginx/6
+REMI=$DATA_DIR/remi/6
+ZABBIX6=$DATA_DIR/zabbix/6
+ZABBIX7=$DATA_DIR/zabbix/7
+GLIBC=$DATA_DIR/glibc/6
 
 TUNA=mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
+REDSLEVE=http://ftp.redsleeve.org/pub/steam/
 # Check Software
 function Check_Software(){
     type rsync >/dev/null 2>&1 || { echo >&2 "I require rsync but it's not installed.  Aborting."; yum install rsync -y; }
     type createrepo >/dev/null 2>&1 || { echo >&2 "I require createrepo but it's not installed.  Aborting."; yum install createrepo -y; }
+    type wget >/dev/null 2>&1 || { echo >&2 "I require createrepo but it's not installed.  Aborting."; yum install wget -y; }
 }
 # check dir
 function Check_Work_Dir(){
@@ -35,7 +40,7 @@ function Check_Data_Dir(){
     if [ -d $DATA_DIR ]; then echo data_dir_is_ok! ; else mkdir -p $DATA_DIR ; fi
 }
 function Check_Mirros_Dir(){
-    if [ -d $EPEL6 ]; then echo mirrors_dir_is_ok! ; else `mkdir -p $EPEL6` `mkdir -p $EPEL7` `mkdir -p $CentOS7` `mkdir -p $CentOS6` `mkdir -p $MONGODB` `mkdir -p $Mariadb` `mkdir -p $Nginx` `mkdir -p $REMI`; fi
+    if [ -d $EPEL6 ]; then echo mirrors_dir_is_ok! ; else `mkdir -p $EPEL6` `mkdir -p $EPEL7` `mkdir -p $CentOS7` `mkdir -p $CentOS6` `mkdir -p $MONGODB` `mkdir -p $Mariadb` `mkdir -p $Nginx` `mkdir -p $REMI` `mkdir -p $ZABBIX6` `mkdir -p $ZABBIX7` `mkdir -p $GLIBC`; fi
 }
 
 function Rsync_Centos7(){
@@ -102,12 +107,37 @@ function Rysnc_Mariadb_For_CentOS7(){
         fi
 }
 
+function Rsync_Zabbix_For_Centos6(){
+        rsync -avz --exclude-from=$Config_DIR/zabbix-for-centos6.list rsync://mirrors.tuna.tsinghua.edu.cn/zabbix/zabbix/3.4/rhel/6/x86_64/ $ZABBIX6
+        if [ -d $ZABBIX6/repodata ];then
+            createrepo --update $ZABBIX6/repodata
+        else
+            createrepo $ZABBIX6
+        fi
+}
+function Rsync_Zabbix_For_Centos7(){
+        rsync -avz --exclude-from=$Config_DIR/zabbix-for-centos7.list rsync://mirrors.tuna.tsinghua.edu.cn/zabbix/zabbix/3.4/rhel/7/x86_64/ $ZABBIX7
+        if [ -d $ZABBIX7/repodata ];then
+            createrepo --update $ZABBIX7/repodata
+        else
+            createrepo $ZABBIX7
+        fi
+}
 function Rsync_Remi_For_Centos6(){
         rsync -avz --exclude-from=$Config_DIR/remi.list rsync://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/ $REMI
         if [ -d $REMI/repodata ];then
             createrepo --update $REMI/repodata
         else
             createrepo $MEMI
+        fi
+}
+
+function Wget_Glibc_For_CentOS6(){
+        wget ftp-url --mirror -p --convert-links -P $GLIBC $REDSLEVE
+        if [ -d $GLIBC/repodata ]; then
+            createrepo --update $GLIBC/repodata
+        else
+            createrepo $GLIBC/repodata
         fi
 }
 
@@ -132,6 +162,14 @@ function List(){
     echo "+---------------------------------------------------------------------------------------+"
     echo "| 8       mongodb     $TUNA        $MONGODB"
     echo "+---------------------------------------------------------------------------------------+"
+    echo "| 9       zabbix6       $TUNA        $ZABBIX6"
+    echo "+---------------------------------------------------------------------------------------+"
+    echo "| 10      zabbix7       $TUNA         $ZABBIX7"
+    echo "+---------------------------------------------------------------------------------------+" 
+    echo "|                 Wget "
+    echo "+---------------------------------------------------------------------------------------+" 
+    echo "| 11      glibc        $REDSLEVE         $GLIBC"  
+    echo "+---------------------------------------------------------------------------------------+" 
 }
 
 #set -x
@@ -169,6 +207,16 @@ case $1 in
     centos7 )
         Rsync_Centos7
         ;;
+    zabbix6 )
+        Rsync_Zabbix_For_Centos6
+
+    ;;
+    zabbix7 )
+        Rsync_Zabbix_For_Centos7
+    ;;
+    glibc )
+        Wget_Glibc_For_CentOS6
+    ;;
     all )
         Rsync_Centos6
         Rsync_Centos7
@@ -178,6 +226,8 @@ case $1 in
         Rsync_Mongodb_For_Centos6
         Rsync_Nginx_For_Centos6
         Rysnc_Mariadb_For_CentOS7
+        Rsync_Zabbix_For_Centos7
+        Rsync_Zabbix_For_Centos6
 
         ;;
     list )
