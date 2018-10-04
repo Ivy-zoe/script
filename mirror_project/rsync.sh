@@ -45,7 +45,7 @@ function Check_Mirros_Dir(){
 function Rsync_Centos7(){
         rsync -avz --exclude-from=$Config_DIR/centos7.list rsync://mirrors.tuna.tsinghua.edu.cn/centos/7.5.1804/os/x86_64/ $CentOS7
         if [ -d $CentOS7/repodata ];then
-            createrepo --update $CentOS7/repodata
+            createrepo --update $CentOS7
         else
             createrepo $CentOS7
         fi
@@ -54,7 +54,7 @@ function Rsync_Centos7(){
 function Rsync_Centos6(){
         rsync -avz --exclude-from=$Config_DIR/centos6.list rsync://mirrors.tuna.tsinghua.edu.cn/centos/6.10/os/x86_64/  $CentOS6
         if [ -d $CentOS6/repodata ];then
-            createrepo --update $CentOS6/repodata
+            createrepo --update $CentOS6
         else
             createrepo $CentOS6
         fi
@@ -63,7 +63,7 @@ function Rsync_Centos6(){
 function Rsync_epel7(){
         rsync -avz --exclude-from=$Config_DIR/epel7.list  rsync://mirrors.tuna.tsinghua.edu.cn/epel/7/x86_64/ $EPEL7
         if [ -d $EPEL7/repodata ];then
-            createrepo --update $EPEL7/repodata
+            createrepo --update $EPEL7
         else
             createrepo $EPEL7
         fi
@@ -73,7 +73,7 @@ function Rsync_epel7(){
 function Rsync_epel6(){
         rsync -avz --exclude-from=$Config_DIR/epel6.list  rsync://mirrors.tuna.tsinghua.edu.cn/epel/7/x86_64/ $EPEL6
         if [ -d $EPEL6/repodata ];then
-            createrepo --update $EPEL6/repodata
+            createrepo --update $EPEL6
         else
             createrepo $EPEL6
         fi
@@ -82,7 +82,7 @@ function Rsync_epel6(){
 function Rsync_Nginx_For_Centos6(){
         rsync -avz --exclude-from=$Config_DIR/nginx-for-centos6.list rsync://rsync.mirrors.ustc.edu.cn/repo/nginx/rhel/6/x86_64/ $Nginx
         if [ -d $Nginx/repodata ];then
-            createrepo --update $Nginx/repodata
+            createrepo --update $Nginx
         else
             createrepo $Nginx
         fi
@@ -91,7 +91,7 @@ function Rsync_Nginx_For_Centos6(){
 function Rsync_Mongodb_For_Centos6(){
         rsync -avz --exclude-from=$Config_DIR/mongodb3.6.list rsync://mirrors.tuna.tsinghua.edu.cn/mongodb/yum/el6-3.6/ $MONGODB
         if [ -d $MONGODB/repodata ];then
-            createrepo --update $MONGODB/repodata
+            createrepo --update $MONGODB
         else
             createrepo $MONGODB
         fi
@@ -100,7 +100,7 @@ function Rsync_Mongodb_For_Centos6(){
 function Rysnc_Mariadb_For_CentOS7(){
         rsync -avz  rsync://mirrors.tuna.tsinghua.edu.cn/mariadb/mariadb-10.3.8/yum/centos73-amd64/ $Mariadb
         if [ -d $Mariadb/repodata ];then
-            createrepo --update $Mariadb/repodata
+            createrepo --update $Mariadb
         else
             createrepo $Mariadb
         fi
@@ -109,7 +109,7 @@ function Rysnc_Mariadb_For_CentOS7(){
 function Rsync_Zabbix_For_Centos6(){
         rsync -avz --exclude-from=$Config_DIR/zabbix-for-centos6.list rsync://mirrors.tuna.tsinghua.edu.cn/zabbix/zabbix/3.4/rhel/6/x86_64/ $ZABBIX6
         if [ -d $ZABBIX6/repodata ];then
-            createrepo --update $ZABBIX6/repodata
+            createrepo --update $ZABBIX6
         else
             createrepo $ZABBIX6
         fi
@@ -117,7 +117,7 @@ function Rsync_Zabbix_For_Centos6(){
 function Rsync_Zabbix_For_Centos7(){
         rsync -avz --exclude-from=$Config_DIR/zabbix-for-centos7.list rsync://mirrors.tuna.tsinghua.edu.cn/zabbix/zabbix/3.4/rhel/7/x86_64/ $ZABBIX7
         if [ -d $ZABBIX7/repodata ];then
-            createrepo --update $ZABBIX7/repodata
+            createrepo --update $ZABBIX7
         else
             createrepo $ZABBIX7
         fi
@@ -125,7 +125,7 @@ function Rsync_Zabbix_For_Centos7(){
 function Rsync_Remi_For_Centos6(){
         rsync -avz --exclude-from=$Config_DIR/remi.list rsync://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/ $REMI
         if [ -d $REMI/repodata ];then
-            createrepo --update $REMI/repodata
+            createrepo --update $REMI
         else
             createrepo $MEMI
         fi
@@ -135,9 +135,9 @@ function Curl_Glibc_For_CentOS6(){
         cd $GLIBC
         curl $REDSLEVE >glibc.html &&cat glibc.html |awk -F '"' '{print $8}' |grep -v ^$|while read line; do curl -O ${REDSLEVE}${line}; done
         if [ -d $GLIBC/repodata ];then
-            createrepo --update $GLIBC/repodata
+            createrepo --update $GLIBC
         else
-            createrepo $GLIBC/repodata
+            createrepo $GLIBC
         fi  
 }
 
