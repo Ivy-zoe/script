@@ -224,7 +224,6 @@ case $1 in
         Rysnc_Mariadb_For_CentOS7
         Rsync_Zabbix_For_Centos7
         Rsync_Zabbix_For_Centos6
-        Curl_Glibc_For_CentOS6
         ;;
     list )
         List
