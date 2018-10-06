@@ -12,7 +12,6 @@ EPEL6=$DATA_DIR/epel/6
 EPEL7=$DATA_DIR/epel/7
 CentOS7=$DATA_DIR/centos/7
 CentOS6=$DATA_DIR/centos/6
-
 MONGODB=$DATA_DIR/mongodb/6
 Mariadb=$DATA_DIR/mariadb/7
 Nginx=$DATA_DIR/nginx/6
@@ -121,6 +120,12 @@ function Rsync_Zabbix_For_Centos7(){
         else
             createrepo $ZABBIX7
         fi
+        rsync -avz rsync://mirrors.tuna.tsinghua.edu.cn/zabbix/non-supported/rhel/7/x86_64/ $ZABBIX7/non-supported
+        if [ -d ZABBIX7/non-supported/repodata ];then
+            createrepo --update $ZABBIX7/non-supported
+        else
+            createrepo $ZABBIX7/non-supported
+        fi
 }
 function Rsync_Remi_For_Centos6(){
         rsync -avz --exclude-from=$Config_DIR/remi.list rsync://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/ $REMI
@@ -138,7 +143,7 @@ function Curl_Glibc_For_CentOS6(){
             createrepo --update $GLIBC
         else
             createrepo $GLIBC
-        fi  
+        fi
 }
 
 function List(){
@@ -165,11 +170,11 @@ function List(){
     echo "| 9       zabbix6       $TUNA        $ZABBIX6"
     echo "+---------------------------------------------------------------------------------------+"
     echo "| 10      zabbix7       $TUNA         $ZABBIX7"
-    echo "+---------------------------------------------------------------------------------------+" 
+    echo "+---------------------------------------------------------------------------------------+"
     echo "|                 Curl "
-    echo "+---------------------------------------------------------------------------------------+" 
-    echo "| 11      glibc        $REDSLEVE         $GLIBC"  
-    echo "+---------------------------------------------------------------------------------------+" 
+    echo "+---------------------------------------------------------------------------------------+"
+    echo "| 11      glibc        $REDSLEVE         $GLIBC"
+    echo "+---------------------------------------------------------------------------------------+"
 }
 
 #set -x
