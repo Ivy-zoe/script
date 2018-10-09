@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+set -e
 function mv_back(){
 	cd ~
 	if [ -d repos ];then
@@ -15,21 +15,25 @@ function mv_repo_file(){
 		mv /etc/yum.repos.d/* ~/repos
 	else
 		echo "file is ok!"
+	fi
+
 }
 
 function add_repo_files(){
-	cp ./repo/mirror.repo /etc/yum.repos.d/
-
+	cp ./repo/mirrors.repo /etc/yum.repos.d/
 }
+
+
 
 case $1 in
 	add )
 		mv_back
 		mv_repo_file
 		add_repo_files
-
-		;;
-	* )
-		echo add
+	;;
+	*)
 	;;
 esac
+
+
+set -x
