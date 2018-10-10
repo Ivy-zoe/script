@@ -12,6 +12,9 @@
 - curl
 
 
+## 过滤
+
+为了可以方便定制 镜像内容config 文件夹下就是一些过滤的文件可以根据需要自行修改
 
 ## 参数设定
 ```
@@ -54,3 +57,51 @@ all 可以直接同步所有镜像
 - Stack 模式
 - Stauts
 - 简化拆分脚本
+
+
+## 同步好的源使用方法
+
+这里推荐使用httpd 方式去发布
+例子
+
+CentOS 
+
+```
+yum install httpd -y
+```
+
+添加到开机启动项并启动
+
+```
+systemctl enable httpd
+systemctl start httpd
+```
+
+验证操作
+```
+curl localhost
+```
+
+创建软连接
+
+```
+ln -s /data/mirrors /var/www/html
+```
+
+## 局域网中的机器使用源
+
+方便使用可以使用1个repo文件或者多个repo文件去管理（多个可以灵活使用yum去管理）
+
+例子使用epel7的源
+192.168.1.100 替换你的镜像服务器ip
+
+```
+[epel7]
+name = epel7
+baseurl = http://192.168.1.100/mirrors/epel/7
+enable = 1
+gpgcheck = 0
+```
+
+然后运行 `yum makecache` 生成缓存
+
