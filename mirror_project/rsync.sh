@@ -2,27 +2,9 @@
 ## =======Rsync script =======
 
 # debug
-set -e
+#set -e
 # Dir
-WORK_DIR=/opt/soft/mirror_project
-Config_DIR=/opt/soft/mirror_project/config
-DATA_DIR=/data/mirrors
-EPEL6=$DATA_DIR/epel/6
-EPEL7=$DATA_DIR/epel/7
-CentOS7=$DATA_DIR/centos/7
-CentOS6=$DATA_DIR/centos/6
-MONGODB=$DATA_DIR/mongodb/6
-Mariadb=$DATA_DIR/mariadb/7
-Nginx=$DATA_DIR/nginx/6
-REMI=$DATA_DIR/remi/6
-ZABBIX6=$DATA_DIR/zabbix/6
-ZABBIX7=$DATA_DIR/zabbix/7
-GLIBC=$DATA_DIR/glibc/6
-TUNA=mirrors.tuna.tsinghua.edu.cn
-USTC=mirrors.ustc.edu.cn
-REDSLEVE=http://ftp.redsleeve.org/pub/steam/
-
-NGINX=http://nginx.org/packages/centos/6/x86_64/
+source ./tools/env.sh
 # Check Software
 function Check_Software(){
     type rsync >/dev/null 2>&1 || { echo >&2 "I require rsync but it's not installed.  Aborting."; yum install rsync -y; }
@@ -214,7 +196,7 @@ function List(){
     echo "+---------------------------------------------------------------------------------------+"
 }
 
-set -x
+#set -x
 case $1 in
     check )
         Check_Mirros_Dir
