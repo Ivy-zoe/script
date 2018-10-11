@@ -35,7 +35,7 @@ function Check_Data_Dir(){
     if [ -d $DATA_DIR ]; then echo data_dir_is_ok! ; else mkdir -p $DATA_DIR ; fi
 }
 function Check_Mirros_Dir(){
-    if [ -d $EPEL6 ]; then echo mirrors_dir_is_ok! ; else `mkdir -p $EPEL6` `mkdir -p $EPEL7` `mkdir -p $CentOS7` `mkdir -p $CentOS6` `mkdir -p $MONGODB` `mkdir -p $Mariadb` `mkdir -p $Nginx` `mkdir -p $REMI` `mkdir -p $ZABBIX6` `mkdir -p $ZABBIX7` `mkdir -p $GLIBC` `mkdir -p $ZABBIX6/deprecated` `mkdir -p $ZABBIX6/SRPMS` `mkdir -p $ZABBIX6/non-supported` `mkdir -p $ZABBIX6/non-supported/SRPMS ` `mkdir -p $ZABBIX7/non-supported` `mkdir -p $ZABBIX7/non-supported/SRPMS` `mkdir -p $ZABBIX7/SRPMS` ; fi
+    if [ -d $EPEL6 ]; then echo mirrors_dir_is_ok! ; else `mkdir -p $EPEL6` `mkdir -p $EPEL7` `mkdir -p $CentOS7` `mkdir -p $CentOS6` `mkdir -p $MONGODB` `mkdir -p $Mariadb` `mkdir -p $Nginx` `mkdir -p $REMI` `mkdir -p $ZABBIX6` `mkdir -p $ZABBIX7` `mkdir -p $GLIBC` `mkdir -p $ZABBIX6/deprecated` `mkdir -p $ZABBIX6/SRPMS` `mkdir -p $ZABBIX6/non-supported` `mkdir -p $ZABBIX6/non-supported/SRPMS ` `mkdir -p $ZABBIX7/non-supported` `mkdir -p $ZABBIX7/non-supported/SRPMS` `mkdir -p $ZABBIX7/SRPMS` `mkdir -p $REMI/php72` `mkdir -p $REMI/php56` ; fi
 }
 
 

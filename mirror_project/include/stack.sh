@@ -124,12 +124,18 @@ function Rsync_Zabbix_For_Centos7(){
         fi
 }
 function Rsync_Remi_For_Centos6(){
-        rsync -avz --exclude-from=$Config_DIR/remi.list rsync://$TUNA/remi/enterprise/ $REMI
-        if [ -d $REMI/repodata ];then
-            createrepo --update $REMI
+        rsync -avz --exclude-from=$Config_DIR/remi.list rsync://$TUNA/remi/6Server/php72/x86_64/ $REMI/php72
+        if [ -d $REMI/php72/repodata ];then
+            createrepo --update $REMI/php72
         else
-            createrepo $MEMI
+            createrepo $MEMI/php72
         fi
+        rsync -avz --exclude-from=$Config_DIR/remi.list rsync://$TUNA/remi/6Server/php56/x86_64/ $REMI/php56
+        if [ -d $REMI/php56/repodata ];then
+            createrepo --update $REMI/php56
+        else
+            createrepo $REMI/php56
+        fi 
 }
 
 function Curl_Glibc_For_CentOS6(){
