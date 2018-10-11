@@ -1,6 +1,7 @@
 # Rsync Script
 
-
+Version:0.1
+status: N/A
 
 ## 介绍
 
@@ -13,9 +14,27 @@
 - git
 
 
+## 使用方法
+
+如果没有git需要安装git
+
+
+```
+git clone https://github.com/slmoby/script
+cd script/mirror_project
+./rsync.sh 
+```
+
+list 可以查看目前支持的镜像
+
+all 可以直接同步所有镜像（注意nginx 和glibc 是使用curl的）
+
+可以修改rsync.sh 菜单来实现管理
+
+
 ## 过滤
 
-为了可以方便定制 镜像内容config 文件夹下就是一些过滤的文件可以根据需要自行修改
+为了可以方便定制 镜像内容 config文件夹下就是一些过滤的文件可以根据需要自行修改
 
 ## 参数设定
 可以修改 tools文件夹下的env.sh内容
@@ -40,24 +59,23 @@ REMI=/data/mirrors/remi/6
 TUNA=mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
 ```
-## 使用方法
-
-如果没有git需要安装git
 
 
+## 增加自定义源
+
+可以在 include 文件夹下的stack.sh 脚本中增加你需要同步的镜像
+例子
+
+```sh
+function Rsync_Centos6(){
+        rsync -avz --exclude-from=$Config_DIR/centos6.list rsync://$TUNA/centos/6.10/os/x86_64/  $CentOS6
+        if [ -d $CentOS6/repodata ];then
+            createrepo --update $CentOS6
+        else
+            createrepo $CentOS6
+        fi
+}
 ```
-git clone https://github.com/slmoby/script
-cd script/mirror_project
-./rsync.sh 
-```
-
-list 可以查看目前支持的镜像
-
-all 可以直接同步所有镜像
-
-可以修改rsync.sh 菜单来实现管理
-
-
 ## 同步好的源使用方法
 
 这里推荐使用httpd 方式去发布
@@ -91,9 +109,15 @@ ln -s /data/mirrors /var/www/html
 
 方便使用可以使用1个repo文件或者多个repo文件去管理（多个可以灵活使用yum去管理）
 
-例子使用epel7的源
-192.168.1.100 替换你的镜像服务器ip
+例子 次脚本的所有源
 
+192.168.1.100 替换你的镜像服务器ip
+首先需要备份原有的yum源
+
+```
+mkdir ~/repos && mv /etc/yum.repos.d/* ~/repos
+```
+然后创建并编辑 `/etc/yum.repos.d/mirrors.repo` 内容如下 （OS:CentOS7）
 ```
 [epel7]
 name = epel7
@@ -101,13 +125,121 @@ baseurl = http://192.168.1.100/mirrors/epel/7
 enable = 1
 gpgcheck = 0
 
+[centos7]
+name = centos7
+baseurl = http://192.168.1.100/mirrors/centos/7
+enable = 1
+gpcheck = 0
+
+[zabbix7]
+name = zabbix7
+baseurl = http://192.168.1.100/mirrors/zabbix/7
+enable = 1
+gpcheck = 0
+
+[zabbix-non-supported]
+name = zabbix-non-supported
+baseurl = http://192.168.1.100/mirrors/zabbix/7/non-supported
+enable = 1
+gpgcheck = 0
+
+[zabbix-non-supported-srpm]
+name = [zabbix-non-supproted-srpm]
+baseurl = http://192.168.1.100/mirrors/zabbix/7/non-supported/SRPMS
+enable = 1
+gpcheck = 0
+
+[zabbix-srpm]
+name = srpm
+baseurl = http://192.168.1.100/mirrors/zabbix/7/SRPMS 
+
+[mariadb]
+name = mariadb
+baseurl = http://192.168.1.100/mirrors/mariadb/7
+enable = 1
+gpgcheck = 0
+
+```
+
+OS:CentOS6
+
+```
+[epel6]
+name = epel6
+baseurl = http://192.168.1.100/mirrors/epel/6
+enbale = 1
+gpgcheck = 0
+
+[centos6]
+name = centos6
+baseurl = http://192.168.1.100/mirrors/centos/6
+enable = 1
+gpgcheck = 0
+
+[nginx]
+name = nginx
+baseurl = http://192.168.1.100/mirrors/nginx/6
+enable = 1
+gpcheck = 0
+
+[zabbix]
+name = zabbix
+baseurl = http://192.168.1.100/mirrors/zabbix/6
+enable = 1
+gpgcheck = 0
+
+[zabbix-deprecated]
+name = zabbix-deprecated
+baseurl = http://192.168.1.100/mirrors/zabbix/6/deprecated
+enable = 1
+gpgcheck = 0
+
+[zabbix-srpm]
+name = zabbix-srpm
+baseurl = http://192.168.1.100/mirrors/zabbix/6/SRPMS
+enable = 1
+gpgcheck = 0
+
+[zabbix-non-supported]
+name = zabbix-non-supported
+baseurl = http://192.168.1.100/mirrors/zabbix/6/non-supported
+enable = 1
+gpgcheck = 0
+
+[zabbix-non-supported-srpm]
+name = zabbix-non-supported-srpm
+baseurl = http://192.168.1.100/mirrors/zabbix/6/non-supported/SRPMS
+enable = 1
+gpgcheck = 0
+
+
+[remi]
+name = remi
+baseurl = http://192.168.1.100/mirrors/remi/6
+enable = 1
+gpgcheck = 0
+
+[glibc]
+name = glibc
+baseurl = http://192.168.1.100/mirrors/glibc/6
+enabel = 1
+gpgcheck = 0
+
+[mongodb]
+name = mongodb
+baseurl = http://192.168.1.100/mirrors/mongodb/6
+enable = 1
+gpgcheck = 0
+
 ```
 
 然后运行 `yum makecache` 生成缓存
 
-
+## 更新脚本
+```
+cd script && git pull
+```
 ## TODO List
 
-- Stack 模式
 - Stauts
-- 简化拆分脚本
+
