@@ -36,7 +36,7 @@ function Rsync_epel6(){
         fi
 }
 
-function Rsync_Nginx_For_Centos6(){
+function Curl_Nginx_For_Centos6(){
         cd $Nginx
         curl $NGINX >nginx.html &&cat nginx.html |grep 1.14 |awk -F '"' '{print $2}'|while read line; do curl -O ${NGINX}${line}; done
         if [ -d $Nginx/repodata ];then
