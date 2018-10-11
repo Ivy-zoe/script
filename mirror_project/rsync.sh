@@ -15,6 +15,7 @@ export PATH
 . include/env.sh
 . include/list.sh
 . include/main.sh
+. include/stack.sh
 
 
 
