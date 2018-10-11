@@ -220,9 +220,16 @@ enable = 1
 gpgcheck = 0
 
 
-[remi]
+[remi56]
 name = remi
-baseurl = http://192.168.1.100/mirrors/remi/6
+baseurl = http://192.168.1.100/mirrors/remi/6/php56
+enable = 1
+gpgcheck = 0
+
+
+[remi72]
+name = remi
+baseurl = http://192.168.1.100/mirrors/remi/6/php72
 enable = 1
 gpgcheck = 0
 
