@@ -10,7 +10,7 @@ export PATH
 ## =======Rsync script =======
 
 # debug
-#set -e
+set -x
 # incloude
 . include/env.sh
 . include/list.sh
@@ -57,7 +57,7 @@ case "$1" in
     remi)
         Rsync_Remi_For_Centos6
     ;;
-    chek)
+    check)
         Check_Software
         Check_Work_Dir
         Check_Data_Dir
