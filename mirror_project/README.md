@@ -10,6 +10,7 @@
 - rsync
 - creatrepo
 - curl
+- git
 
 
 ## 过滤
@@ -17,6 +18,7 @@
 为了可以方便定制 镜像内容config 文件夹下就是一些过滤的文件可以根据需要自行修改
 
 ## 参数设定
+可以修改 tools文件夹下的env.sh内容
 ```
 WORK_DIR=/opt/soft/mirror_project
 脚本的目录
@@ -30,33 +32,30 @@ EPEL6=/data/mirrors/epel/6
 EPEL7=/data/mirrors/epel/7
 CentOS7=/data/mirrors/centos/7
 CentOS6=/data/mirrors/centos/6
-
 MONGODB=/data/mirrors/mongodb/6
 Mariadb=/data/mirrors/mariadb/7
 Nginx=/data/mirrors/nginx/6
 REMI=/data/mirrors/remi/6
-站点（这里并没有太大的作用后续版本会用到）
+站点
 TUNA=mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
 ```
 ## 使用方法
 
+如果没有git需要安装git
+
 
 ```
-./rsync list && all
+git clone https://github.com/slmoby/script
+cd script/mirror_project
+./rsync.sh 
 ```
 
 list 可以查看目前支持的镜像
 
 all 可以直接同步所有镜像
 
-
-
-## TODO List
-
-- Stack 模式
-- Stauts
-- 简化拆分脚本
+可以修改rsync.sh 菜单来实现管理
 
 
 ## 同步好的源使用方法
@@ -101,7 +100,14 @@ name = epel7
 baseurl = http://192.168.1.100/mirrors/epel/7
 enable = 1
 gpgcheck = 0
+
 ```
 
 然后运行 `yum makecache` 生成缓存
 
+
+## TODO List
+
+- Stack 模式
+- Stauts
+- 简化拆分脚本
