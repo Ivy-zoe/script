@@ -15,4 +15,4 @@ GLIBC=$DATA_DIR/glibc/6
 TUNA=mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
 REDSLEVE=http://ftp.redsleeve.org/pub/steam/
-NGINX=http://nginx.org/packages/centos/6/x86_64/
+NGINX=http://nginx.org/packages/centos/6/x86_64/RPMS/
