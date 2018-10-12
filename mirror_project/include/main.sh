@@ -46,7 +46,8 @@ function all(){
         Rsync_epel6
         Rsync_Remi_For_Centos6
         Rsync_Mongodb_For_Centos6
-        Rsync_Nginx_For_Centos6
+        Curl_Nginx_For_Centos6
+        Curl_Glibc_For_CentOS6
         Rysnc_Mariadb_For_CentOS7
         Rsync_Zabbix_For_Centos7
         Rsync_Zabbix_For_Centos6
