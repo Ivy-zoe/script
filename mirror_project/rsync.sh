@@ -10,7 +10,7 @@ export PATH
 ## =======Rsync script =======
 
 # debug
-set -x
+#set -x
 # incloude
 . include/env.sh
 . include/list.sh
