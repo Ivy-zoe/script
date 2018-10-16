@@ -56,7 +56,7 @@ function Rsync_Mongodb_For_Centos6(){
 }
 
 function Rysnc_Mariadb_For_CentOS7(){
-        rsync -avz  --exclude-from=$Config_DIR/mariadb.list rsync://$TUNA/mariadb/mariadb-10.3.9/yum/centos7-amd64/rpms/ $Mariadb
+        rsync -avz  --exclude-from=$Config_DIR/mariadb.list rsync://$TUNA/mariadb/mariadb-10.3.9/yum/centos7-amd64/ $Mariadb
         if [ -d $Mariadb/repodata ];then
             createrepo --update $Mariadb
         else
