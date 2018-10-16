@@ -151,7 +151,7 @@ enable = 1
 gpgcheck = 0
 
 [zabbix-non-supported-srpm]
-name = [zabbix-non-supproted-srpm]
+name = zabbix-non-supproted-srpm
 baseurl = http://192.168.1.100/mirrors/zabbix/7/non-supported/SRPMS
 enable = 1
 gpcheck = 0
