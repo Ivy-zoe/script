@@ -59,9 +59,7 @@ case "$1" in
     ;;
     check)
         Check_Software
-        Check_Work_Dir
-        Check_Data_Dir
-        Check_Mirros_Dir
+        Updata_Config
     ;;
     *)  
         RUN
