@@ -2,17 +2,10 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-
-#if [ $(id -u) != "0" ]; then
-#    echo "Error: You must be root to run this script, please use root to run this script!"
-#    exit 1
-#fi
-## =======Rsync script =======
-
 # debug
 #set -x
+
 # incloude
-. include/env.sh
 . include/list.sh
 . include/main.sh
 . include/stack.sh

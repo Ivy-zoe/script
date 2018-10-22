@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+
 function Rsync_Centos7(){
         rsync -avz --exclude-from=$Config_DIR/centos7.list rsync://$TUNA/centos/7.5.1804/os/x86_64/ $CentOS7
         if [ -d $CentOS7/repodata ];then
