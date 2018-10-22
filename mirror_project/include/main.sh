@@ -15,8 +15,11 @@ REMI=$DATA_DIR/remi/6
 ZABBIX6=$DATA_DIR/zabbix/6
 ZABBIX7=$DATA_DIR/zabbix/7
 GLIBC=$DATA_DIR/glibc/6
+influxdata7=$DATA_DIR/influxdata/7
+influxdata6=$DATA_DIR/influxdata/6
 TUNA=mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
+
 REDSLEVE=http://ftp.redsleeve.org/pub/steam/
 NGINX=http://nginx.org/packages/centos/6/x86_64/RPMS/
 
@@ -86,7 +89,7 @@ function Check_Mirrors_Dirs(){
         mkdir -p $EPEL7
     fi
 
-    if [ -d $EPEL6]; then
+    if [ -d $EPEL6 ]; then
         greencolor "$EPEL6 is OK!"
     else
         mkdir -p $EPEL6
