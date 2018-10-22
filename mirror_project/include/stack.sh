@@ -84,13 +84,13 @@ function Rsync_Zabbix_For_Centos6(){
         else
             createrepo $ZABBIX6/SRPMS
         fi
-        rsync -avz --exclude-from=$Config_DIR/zabbix-for-centos6.list rsync://$TUNA/non-supported/rhel/6/x86_64 $ZABBIX6/non-supported
+        rsync -avz --exclude-from=$Config_DIR/zabbix-for-centos6.list rsync://$TUNA/zabbix/non-supported/rhel/6/x86_64/ $ZABBIX6/non-supported
         if [ -d $ZABBIX6/non-supported/repodata ];then
             createrepo --update $ZABBIX6/non-supported
         else
             createrepo $ZABBIX6/non-supported
         fi
-        rsync -avz --exclude-from=$Config_DIR/zabbix-for-centos6.list rsync://$TUNA/non-supported/rhel/6/SRPMS $ZABBIX6/non-supported/SRPMS
+        rsync -avz --exclude-from=$Config_DIR/zabbix-for-centos6.list rsync://$TUNA/zabbix/non-supported/rhel/6/SRPMS $ZABBIX6/non-supported/SRPMS
         if [ -d $ZABBIX6/non-supported/SRPMS/repodata ];then
             createrepo --update $ZABBIX6/non-supported/SRPMS
         else
