@@ -58,6 +58,7 @@ case "$1" in
     check)
         Check_Software
         Updata_Config
+        Check_Mirrors_Dirs
         ;;
     *)
         RUN
