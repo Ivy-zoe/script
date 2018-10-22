@@ -38,7 +38,7 @@ all 可以直接同步所有镜像（注意nginx 和glibc 是使用curl的）
 为了可以方便定制 镜像内容 config文件夹下就是一些过滤的文件可以根据需要自行修改
 
 ## 参数设定
-可以修改 tools文件夹下的env.sh内容
+可以修改 incloude文件夹下的main.sh内容
 ```
 WORK_DIR=/opt/soft/mirror_project
 脚本的目录
@@ -167,6 +167,12 @@ baseurl = http://192.168.1.100/mirrors/mariadb/7
 enable = 1
 gpgcheck = 0
 
+[influxdata]
+name = influxdata
+baseurl = http://192.168.1.100/mirrors/influxdata/7
+enable = 1
+gpgcheck = 0
+
 ```
 
 OS:CentOS6
@@ -243,6 +249,12 @@ gpgcheck = 0
 [mongodb]
 name = mongodb
 baseurl = http://192.168.1.100/mirrors/mongodb/6
+enable = 1
+gpgcheck = 0
+
+[influxdata]
+name = influxdata
+baseurl = http://192.168.1.100/mirrors/influxdata/6
 enable = 1
 gpgcheck = 0
 
