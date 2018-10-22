@@ -56,6 +56,12 @@ case "$1" in
     remi)
         Rsync_Remi_For_Centos6
         ;;
+    influxdata6)
+        Rsync_influxdata_CentOS6
+        ;;
+    influxdata7)
+        Rsync_influxdata_CentOS7
+        ;;
     check)
         Check_Software
         Updata_Config
