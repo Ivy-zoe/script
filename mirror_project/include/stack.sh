@@ -136,7 +136,7 @@ function Rsync_Remi_For_Centos6(){
             createrepo --update $REMI/php56
         else
             createrepo $REMI/php56
-        fi 
+        fi
 }
 
 function Curl_Glibc_For_CentOS6(){
@@ -146,5 +146,23 @@ function Curl_Glibc_For_CentOS6(){
             createrepo --update $GLIBC
         else
             createrepo $GLIBC
+        fi
+}
+
+function Rsync_influxdata_CentOS6(){
+        rsync -avz rsync://$TUNA/influxdata/yum/el6-x86_64/ $influxdata6
+        if [ -d $influxdata6/repodata ];then
+            createrepo --update $influxdata6
+        else
+            createrepo $influxdata6
+        fi
+}
+
+function Rsync_influxdata_CentOS7(){
+        rsync -avz rsync://$TUNA/influxdata/yum/el7-x86_64/ $influxdata7
+        if [ -d $influxdata7/repodata ];then
+            createrepo --update $influxdata7
+        else
+            createrepo $influxdata7
         fi
 }

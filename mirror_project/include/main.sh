@@ -46,6 +46,8 @@ mkdir -p $ZABBIX7/non-supported/SRPMS
 mkdir -p $ZABBIX7/SRPMS
 mkdir -p $REMI/php72
 mkdir -p $REMI/php56
+mkdir -p $influxdata6
+mkdir -p $influxdata7
 
 function Updata_Config(){
     cp -r ./config $WORK_DIR
