@@ -63,6 +63,9 @@ case "$1" in
     mysql57)
         Rsync_Mysql57_CentOS7
         ;;
+    pmm)
+        Curl_PMM_CentOS7
+        ;;
     *)
         RUN
         redcolor "Usage: $0 {check|all|list}"
