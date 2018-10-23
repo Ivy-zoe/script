@@ -179,7 +179,7 @@ function Check_Mirrors_Dirs(){
     if [ -d $MYSQL57 ]; then
         greencolor "$MYSQL57 is OK!"
     else
-        mkdir -p "$MYSQL57 is OK!"
+        mkdir -p "$MYSQL57"
     fi
 }
 
