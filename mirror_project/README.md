@@ -1,6 +1,6 @@
 # Rsync Script
 
-Version:0.3
+Version:0.4
 status: N/A
 
 ## 介绍

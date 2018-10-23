@@ -142,6 +142,8 @@ function Rsync_Remi_For_Centos6(){
 function Curl_Glibc_For_CentOS6(){
         cd $GLIBC
         curl $REDSLEVE >glibc.html &&cat glibc.html |awk -F '"' '{print $8}' |grep -v ^$|while read line; do curl -O ${REDSLEVE}${line}; done
+        cd $GLIBC
+        wget --input-file=$Config_DIR/glibc-wget-list --continue --directory-prefix=$GLIBC
         if [ -d $GLIBC/repodata ];then
             createrepo --update $GLIBC
         else
