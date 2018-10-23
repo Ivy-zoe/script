@@ -129,7 +129,7 @@ function Rsync_Remi_For_Centos6(){
         if [ -d $REMI/php72/repodata ];then
             createrepo --update $REMI/php72
         else
-            createrepo $MEMI/php72
+            createrepo $REMI/php72
         fi
         rsync -avz --exclude-from=$Config_DIR/remi.list rsync://$TUNA/remi/enterprise/6Server/php56/x86_64/ $REMI/php56
         if [ -d $REMI/php56/repodata ];then

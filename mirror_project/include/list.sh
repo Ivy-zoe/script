@@ -3,7 +3,7 @@
 function List(){
     clear
     purplecolor "+---------------------------------------------------------------------------------------+"
-    redcolor "| Number  Images_Name    Website                      Local_Path           "
+    redcolor "| Number  images_command    Website                      Local_Path           "
     purplecolor "+---------------------------------------------------------------------------------------+"
     greencolor "| 1       epel6         $TUNA        $EPEL6   "
     purplecolor "+---------------------------------------------------------------------------------------+"
@@ -23,12 +23,16 @@ function List(){
     purplecolor "+---------------------------------------------------------------------------------------+"
     greencolor "| 9      zabbix7       $TUNA         $ZABBIX7"
     purplecolor "+---------------------------------------------------------------------------------------+"
+    greencolor "| 10       influxdata6         $TUNA        $influxdata6 "
+    purplecolor "+---------------------------------------------------------------------------------------+"
+    greencolor "| 11       influxdata7         $TUNA        $influxdata7 "
+    purplecolor "+---------------------------------------------------------------------------------------+"
     redcolor "|                 Curl "
     purplecolor "+---------------------------------------------------------------------------------------+"
-    greencolor "| 10      glibc        $REDSLEVE         $GLIBC"
+    greencolor "| 12      glibc        $REDSLEVE         $GLIBC"
     purplecolor "+---------------------------------------------------------------------------------------+"
-    greencolor "| 11       nginx         $USTC        $Nginx "
-    purplecolor "+---------------------------------------------------------------------------------------+"    
+    greencolor "| 13       nginx         $USTC        $Nginx "
+    purplecolor "+---------------------------------------------------------------------------------------+"
 }
 
 function RUN(){
@@ -48,4 +52,3 @@ function RUN(){
     skybluecolor "|Use the corresponding image name to sync, or use all to sync all"
     skybluecolor "+------------------------------------------------------------------------+"
 }
-

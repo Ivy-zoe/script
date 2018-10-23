@@ -26,16 +26,16 @@ NGINX=http://nginx.org/packages/centos/6/x86_64/RPMS/
 
 # clover
 function blackcolor {
-	echo -e "\033[32m$1\033[0m"
+    echo -e "\033[32m$1\033[0m"
 }
 function redcolor {
-	echo -e "\033[31m$1\033[0m"
+    echo -e "\033[31m$1\033[0m"
 }
 function greencolor {
-	echo -e "\033[32m$1\033[0m"
+    echo -e "\033[32m$1\033[0m"
 }
 function bluecolor {
-	echo -e "\033[34m$1\033[0m"
+    echo -e "\033[34m$1\033[0m"
 }
 function purplecolor {
     echo -e "\033[35m$1\033[0m"
@@ -52,6 +52,7 @@ function skybluecolor {
 function Check_Software(){
     type rsync >/dev/null 2>&1 || { redcolor >&2 "I require rsync but it's not installed.  Aborting."; yum install rsync -y; }
     type createrepo >/dev/null 2>&1 || { redcolor >&2 "I require createrepo but it's not installed.  Aborting."; yum install createrepo -y; }
+    type curl >/dev/null 2>&1 || { redcolor >&2 "I require curl but it's not installd . Aborting."; yum install curl -y;}
 }
 # check dir
 
@@ -116,7 +117,7 @@ function Check_Mirrors_Dirs(){
     if [ -d $ZABBIX6/deprecated ]; then
         greencolor "$ZABBIX6/deprecated is OK!"
     else
-        mkdir -p $ZABBIX6/deprecated 
+        mkdir -p $ZABBIX6/deprecated
     fi
 
     if [ -d $MONGODB ]; then
@@ -186,15 +187,17 @@ function Updata_Config(){
 
 
 function all(){
-	    Rsync_Centos6
-        Rsync_Centos7
-        Rsync_epel7
-        Rsync_epel6
-        Rsync_Remi_For_Centos6
-        Rsync_Mongodb_For_Centos6
-        Curl_Nginx_For_Centos6
-        Curl_Glibc_For_CentOS6
-        Rysnc_Mariadb_For_CentOS7
-        Rsync_Zabbix_For_Centos7
-        Rsync_Zabbix_For_Centos6
+    Rsync_Centos6
+    Rsync_Centos7
+    Rsync_epel7
+    Rsync_epel6
+    Rsync_Remi_For_Centos6
+    Rsync_Mongodb_For_Centos6
+    Curl_Nginx_For_Centos6
+    Curl_Glibc_For_CentOS6
+    Rysnc_Mariadb_For_CentOS7
+    Rsync_Zabbix_For_Centos7
+    Rsync_Zabbix_For_Centos6
+    Rsync_influxdata_CentOS6
+    Rsync_influxdata_CentOS7
 }
