@@ -60,6 +60,9 @@ case "$1" in
         Updata_Config
         Check_Mirrors_Dirs
         ;;
+    mysql57)
+        Rsync_Mysql57_CentOS7
+        ;;
     *)
         RUN
         redcolor "Usage: $0 {check|all|list}"

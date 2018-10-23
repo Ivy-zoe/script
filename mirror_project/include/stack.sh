@@ -166,3 +166,14 @@ function Rsync_influxdata_CentOS7(){
             createrepo $influxdata7
         fi
 }
+
+function Rsync_Mysql57_CentOS7(){
+        rsync -avz --exclude-from=$Config_DIR/mysql.list rsync://$TUNA/mysql/yum/mysql57-community-el7/ $MYSQL57
+        rsync -avz --exclude-from=$Config_DIR/mysql.list rsync://$TUNA/mysql/yum/mysql-tools-community-el7/ $MYSQL57
+        rsync -avz --exclude-from=$Config_DIR/mysql.list rsync://$TUNA/mysql/yum/mysql-connectors-community-el7/ $MYSQL57
+        if [ -d $MYSQL57/repodata ]; then
+            createrepo --update $MYSQL57
+        else
+            createrepo $MYSQL57
+        fi
+}

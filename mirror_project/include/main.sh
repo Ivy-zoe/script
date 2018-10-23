@@ -17,6 +17,7 @@ ZABBIX7=$DATA_DIR/zabbix/7
 GLIBC=$DATA_DIR/glibc/6
 influxdata7=$DATA_DIR/influxdata/7
 influxdata6=$DATA_DIR/influxdata/6
+MYSQL57=$DATA_DIR/mysql57/7
 TUNA=mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
 
@@ -174,6 +175,12 @@ function Check_Mirrors_Dirs(){
     else
         mkdir -p $influxdata7
     fi
+
+    if [ -d $MYSQL57 ]; then
+        greencolor "$MYSQL57 is OK!"
+    else
+        mkdir -p "$MYSQL57 is OK!"
+    fi
 }
 
 
@@ -200,4 +207,5 @@ function all(){
     Rsync_Zabbix_For_Centos6
     Rsync_influxdata_CentOS6
     Rsync_influxdata_CentOS7
+    Rsync_Mysql57_CentOS7
 }
