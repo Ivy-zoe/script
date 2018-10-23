@@ -64,7 +64,7 @@ case "$1" in
         Rsync_Mysql57_CentOS7
         ;;
     pmm)
-        Curl_PMM_CentOS7
+        Curl_PMM_CentOS6
         ;;
     *)
         RUN

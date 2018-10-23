@@ -173,6 +173,13 @@ baseurl = http://192.168.1.100/mirrors/influxdata/7
 enable = 1
 gpgcheck = 0
 
+[mysql57]
+name = mysql57
+baseurl = http://192.168.1.100/mirrors/mysql57/7
+enable = 1
+gpgcheck = 0
+
+
 ```
 
 OS:CentOS6
@@ -256,6 +263,12 @@ gpgcheck = 0
 name = influxdata
 baseurl = http://192.168.1.100/mirrors/influxdata/6
 enable = 1
+gpgcheck = 0
+
+[pmm]
+name = pmm
+baseurl = http://192.168.1.100/mirrors/pmm/6
+enbale = 1
 gpgcheck = 0
 
 ```

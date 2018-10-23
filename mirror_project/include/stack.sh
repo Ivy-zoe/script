@@ -178,7 +178,7 @@ function Rsync_Mysql57_CentOS7(){
         fi
 }
 
-function Curl_PMM_CentOS7(){
+function Curl_PMM_CentOS6(){
         cd $PMM
         curl  -O https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-2.4.12/binary/redhat/6/x86_64/percona-xtrabackup-24-2.4.12-1.el6.x86_64.rpm
         if [ -d $PMM/repodata ]; then

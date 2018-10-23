@@ -18,7 +18,7 @@ GLIBC=$DATA_DIR/glibc/6
 influxdata7=$DATA_DIR/influxdata/7
 influxdata6=$DATA_DIR/influxdata/6
 MYSQL57=$DATA_DIR/mysql57/7
-PMM=$DATA_DIR/pmm/7
+PMM=$DATA_DIR/pmm/6
 TUNA=mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
 
@@ -215,5 +215,5 @@ function all(){
     Rsync_influxdata_CentOS6
     Rsync_influxdata_CentOS7
     Rsync_Mysql57_CentOS7
-    Curl_PMM_CentOS7
+    Curl_PMM_CentOS6
 }
