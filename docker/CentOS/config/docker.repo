@@ -1,5 +1,5 @@
 [docker-ce]
 name = docker-ce
-baseurl = http://mirrors.ustc.edu.cn/docker-ce/linux/centos/7/x86_64/stable/Packages/
+baseurl = http://mirrors.ustc.edu.cn/docker-ce/linux/centos/7/x86_64/stable
 enable = 1
 gpgcheck = 0
