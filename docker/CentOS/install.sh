@@ -4,12 +4,9 @@ source /etc/profile
 
 set -x
 
-claer
-
 echo "Install Docker now!"
 
 
-PWD=$pwd
 
 function Check_System(){
 	yum install epel-release  -y
@@ -36,7 +33,7 @@ function Install_Dokcer(){
   	if [ -f /etc/yum.repos.d/docker.repo ]; then
   		echo "You Docker repos is Ok!"
   	else
-  		curl -O https://raw.githubusercontent.com/slmoby/script/master/docker/CentOS/config/docker.repo && mv docker.repo /etc/yum.repos.d/mirrors.repo
+  		curl -O https://raw.githubusercontent.com/slmoby/script/master/docker/CentOS/config/docker.repo && mv docker.repo /etc/yum.repos.d/docker.repo
   	fi
   	yum makecache
   	yum install docker-ce -y
