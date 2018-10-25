@@ -4,9 +4,6 @@ source /etc/profile
 
 set -x
 
-echo "Install Docker now!"
-
-
 
 function Check_System(){
 	yum install epel-release  -y
@@ -63,8 +60,10 @@ case $1 in
 
 	;;
 	config )
+		Config_Docker_mirrors
 
 	;;
 	* )
+		echo "Please type install,remove or config!"
 	;;
 esac
