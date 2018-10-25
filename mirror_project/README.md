@@ -137,13 +137,13 @@ gpgcheck = 0
 name = centos7
 baseurl = http://192.168.1.100/mirrors/centos/7
 enable = 1
-gpcheck = 0
+gpgcheck = 0
 
 [zabbix7]
 name = zabbix7
 baseurl = http://192.168.1.100/mirrors/zabbix/7
 enable = 1
-gpcheck = 0
+gpgcheck = 0
 
 [zabbix-non-supported]
 name = zabbix-non-supported
@@ -160,6 +160,8 @@ gpcheck = 0
 [zabbix-srpm]
 name = srpm
 baseurl = http://192.168.1.100/mirrors/zabbix/7/SRPMS 
+enable = 1
+gpgcheck = 0
 
 [mariadb]
 name = mariadb
@@ -201,7 +203,7 @@ gpgcheck = 0
 name = nginx
 baseurl = http://192.168.1.100/mirrors/nginx/6
 enable = 1
-gpcheck = 0
+gpgcheck = 0
 
 [zabbix]
 name = zabbix
