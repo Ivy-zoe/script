@@ -66,6 +66,9 @@ case "$1" in
     pmm)
         Curl_PMM_CentOS6
         ;;
+    rock )
+        Ryns_OpenStack_Rock
+        ;;
     *)
         RUN
         redcolor "Usage: $0 {check|all|list}"

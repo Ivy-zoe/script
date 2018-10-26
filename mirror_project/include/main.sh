@@ -21,6 +21,7 @@ MYSQL57=$DATA_DIR/mysql57/7
 PMM=$DATA_DIR/pmm/6
 TUNA=mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
+ROCK=$DATA_DIR/rock
 
 REDSLEVE=http://ftp.redsleeve.org/pub/steam/
 NGINX=http://nginx.org/packages/centos/6/x86_64/RPMS/
@@ -188,6 +189,13 @@ function Check_Mirrors_Dirs(){
     else
         mkdir -p "$PMM"
     fi
+
+    if [ -d $ROCK ]; then
+        greencolor "$ROCK is OK!"
+    else
+        mkdir -p $ROCK
+    fi
+
 }
 
 
@@ -216,4 +224,5 @@ function all(){
     Rsync_influxdata_CentOS7
     Rsync_Mysql57_CentOS7
     Curl_PMM_CentOS6
+    Ryns_OpenStack_Rock
 }

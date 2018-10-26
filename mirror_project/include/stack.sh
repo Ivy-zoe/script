@@ -189,3 +189,14 @@ function Curl_PMM_CentOS6(){
             createrepo $PMM
         fi
 }
+
+
+function Ryns_OpenStack_Rock(){
+        rsync -avz rsync://$TUNA/centos/7.5.1804/cloud/x86_64/openstack-rocky/ $ROCK
+        if [ -d $ROCK/repodata ]; then
+            createrepo --update $ROCK
+        else
+            createrepo $ROCK
+        fi
+
+}
