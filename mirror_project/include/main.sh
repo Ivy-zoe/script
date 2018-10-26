@@ -22,6 +22,7 @@ PMM=$DATA_DIR/pmm/6
 TUNA=mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
 ROCK=$DATA_DIR/rock
+DOCKER=$DATA_DIR/docker
 
 REDSLEVE=http://ftp.redsleeve.org/pub/steam/
 NGINX=http://nginx.org/packages/centos/6/x86_64/RPMS/
@@ -196,6 +197,13 @@ function Check_Mirrors_Dirs(){
         mkdir -p $ROCK
     fi
 
+    if [ -d $DOCKER ]; then
+        greencolor "$DOCKER is OK!"
+    else
+        mkdir -p $DOCKER
+    fi
+
+
 }
 
 
@@ -225,4 +233,5 @@ function all(){
     Rsync_Mysql57_CentOS7
     Curl_PMM_CentOS6
     Ryns_OpenStack_Rock
+    Rysnc_Docker_For_CentOS7
 }

@@ -69,6 +69,9 @@ case "$1" in
     rock )
         Ryns_OpenStack_Rock
         ;;
+    docker )
+        Rysnc_Docker_For_CentOS7
+        ;; 
     *)
         RUN
         redcolor "Usage: $0 {check|all|list}"

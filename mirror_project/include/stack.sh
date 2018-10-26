@@ -198,5 +198,14 @@ function Ryns_OpenStack_Rock(){
         else
             createrepo $ROCK
         fi
+}
 
+
+function Rysnc_Docker_For_CentOS7(){
+        rsync -avz rsync://$TUNA/docker/yum/repo/centos7/Packages/ $DOCKER
+        if [ -d $DOCKER/repodata ]; then
+            createrepo --update $DOCKER
+        else
+             createrepo $DOCKER
+        fi
 }
