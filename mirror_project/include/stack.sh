@@ -202,10 +202,30 @@ function Ryns_OpenStack_Rock(){
 
 
 function Rysnc_Docker_For_CentOS7(){
-        rsync -avz rsync://$TUNA/docker/yum/repo/centos7/Packages/ $DOCKER
+        rsync -avz rsync://$TUNA/docker/yum/repo/centos7 $DOCKER
         if [ -d $DOCKER/repodata ]; then
             createrepo --update $DOCKER
         else
              createrepo $DOCKER
         fi
 }
+
+
+function Rsync_Centos6_centosplus(){
+        rsync -avz rsync://$TUNA/centos/6.10/centosplus/x86_64/ $CentOS6/centosplus
+        if [ -d $CentOS6/centosplus/repodata ]; then
+            createrepo --update $CentOS6/centosplus
+        else
+            createrepo $CentOS6/centosplus
+        fi
+}
+
+function Rsync_Centos6_extras(){
+        rsync -avz rsync://$TUNA/centos/6.10/extras/x86_64/ $CentOS6/extras
+        if [ -d $CentOS6/extras/repodata ]; then
+                createrepo --update $CentOS6/extras
+        else
+                createrepo $CentOS6/extras
+        fi
+}
+

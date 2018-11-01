@@ -1,6 +1,6 @@
 # Rsync Script
 
-Version:0.4
+Version:0.5
 status: N/A
 
 ## 介绍
@@ -155,7 +155,7 @@ gpgcheck = 0
 name = zabbix-non-supproted-srpm
 baseurl = http://192.168.1.100/mirrors/zabbix/7/non-supported/SRPMS
 enable = 1
-gpcheck = 0
+gpgcheck = 0
 
 [zabbix-srpm]
 name = srpm
@@ -178,6 +178,12 @@ gpgcheck = 0
 [mysql57]
 name = mysql57
 baseurl = http://192.168.1.100/mirrors/mysql57/7
+enable = 1
+gpgcheck = 0
+
+[docker]
+name = docker-ce
+baseurl = http://192.168.1.100/mirrors/docker
 enable = 1
 gpgcheck = 0
 

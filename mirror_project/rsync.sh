@@ -71,7 +71,7 @@ case "$1" in
         ;;
     docker )
         Rysnc_Docker_For_CentOS7
-        ;; 
+        ;;
     *)
         RUN
         redcolor "Usage: $0 {check|all|list}"
