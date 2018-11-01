@@ -29,7 +29,7 @@ function Rsync_epel7(){
 }
 
 function Rsync_epel6(){
-        rsync -avz --exclude-from=$Config_DIR/epel6.list  rsync://$TUNA/epel/7/x86_64/ $EPEL6
+        rsync -avz --exclude-from=$Config_DIR/epel6.list  rsync://$TUNA/epel/6/x86_64/ $EPEL6
         if [ -d $EPEL6/repodata ];then
             createrepo --update $EPEL6
         else
