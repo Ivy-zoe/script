@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x 
+
 
 function Rsync_CentOS6(){
     rsync -avz --exclude-from=$Config_DIR/centos6.list rsync://$TUNA/centos/6.10/ $CentOS6

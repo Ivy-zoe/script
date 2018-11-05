@@ -217,21 +217,8 @@ function Updata_Config(){
 
 
 function all(){
-    Rsync_Centos6
-    Rsync_Centos7
-    Rsync_epel7
+    Rsync_CentOS6
+    Rsync_CentOS7
     Rsync_epel6
-    Rsync_Remi_For_Centos6
-    Rsync_Mongodb_For_Centos6
-    Curl_Nginx_For_Centos6
-    Curl_Glibc_For_CentOS6
-    Rysnc_Mariadb_For_CentOS7
-    Rsync_Zabbix_For_Centos7
-    Rsync_Zabbix_For_Centos6
-    Rsync_influxdata_CentOS6
-    Rsync_influxdata_CentOS7
-    Rsync_Mysql57_CentOS7
-    Curl_PMM_CentOS6
-    Ryns_OpenStack_Rock
-    Rysnc_Docker_For_CentOS7
+    Rsync_epel7
 }
