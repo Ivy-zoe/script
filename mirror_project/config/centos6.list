@@ -1,5 +1,9 @@
-EFI
-LiveOS
-images
-isolinux
-repodata
+centosplus/i386/
+cloud
+contrib/i386/
+cr/i386/
+extras/i386/
+fasttrack/i386/
+isos
+os
+updates/i386/

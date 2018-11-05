@@ -19,59 +19,6 @@ case "$1" in
     list)
         List
         ;;
-    mariadb)
-        Rysnc_Mariadb_For_CentOS7
-        ;;
-    nginx)
-        Curl_Nginx_For_Centos6
-        ;;
-    zabbix6)
-        Rsync_Zabbix_For_Centos6
-        ;;
-    zabbix7)
-        Rsync_Zabbix_For_Centos7
-        ;;
-    mongodb)
-        Rsync_Mongodb_For_Centos6
-        ;;
-    centos6)
-        Rsync_Centos6
-        ;;
-    centos7)
-        Rsync_Centos7
-        ;;
-    epel6)
-        Rsync_epel6
-        ;;
-    epel7)
-        Rsync_epel7
-        ;;
-    remi)
-        Rsync_Remi_For_Centos6
-        ;;
-    influxdata6)
-        Rsync_influxdata_CentOS6
-        ;;
-    influxdata7)
-        Rsync_influxdata_CentOS7
-        ;;
-    check)
-        Check_Software
-        Updata_Config
-        Check_Mirrors_Dirs
-        ;;
-    mysql57)
-        Rsync_Mysql57_CentOS7
-        ;;
-    pmm)
-        Curl_PMM_CentOS6
-        ;;
-    rock )
-        Ryns_OpenStack_Rock
-        ;;
-    docker )
-        Rysnc_Docker_For_CentOS7
-        ;;
     *)
         RUN
         redcolor "Usage: $0 {check|all|list}"
