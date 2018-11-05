@@ -1,9 +1,9 @@
 centosplus/i386/
-cloud
+cloud/
 contrib/i386/
 cr/i386/
 extras/i386/
 fasttrack/i386/
-isos
-os
+isos/
+os/
 updates/i386/
