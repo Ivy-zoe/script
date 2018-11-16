@@ -69,6 +69,15 @@ function _skybluecolor {
 }
 
 
+function _update_repos(){
+	if [ -d $1/repodate ]; then
+		createrepo --update $1
+	else
+		createrepo $1
+	fi
+
+}
+
 
 function _check_directory(){
          if [  -d $1  = 0 ];then
