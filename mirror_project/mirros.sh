@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 if [ -e ./lib/libs.so ]; then
     source ./lib/libs.so
         if [ $? = 0 ]; then
@@ -10,10 +12,9 @@ if [ -e ./lib/libs.so ]; then
     exit 9
 fi
 
+
 _source_file_exist ./include/stack.sh
 _source_file_exist ./include/main.sh
-
-
 
 
 

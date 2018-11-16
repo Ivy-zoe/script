@@ -1,1 +1,16 @@
-isos
+SRPMS
+aarch64
+ppc64
+ppc64le
+debug
+repodata
+EFI
+LiveOS
+images
+isolinux
+CentOS_BuildTag
+EULA
+GPL
+RPM-GPG-KEY-CentOS-7
+RPM-GPG-KEY-CentOS-Testing-7
+drpms

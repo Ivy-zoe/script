@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# Env
+
+# env config
 
 Config_DIR=./config
-DATA_DIR=/data/mirrors
+DATA_DIR=/Volumes/data
 EPEL6=$DATA_DIR/epel/6
 EPEL7=$DATA_DIR/epel/7
 CentOS7=$DATA_DIR/centos/7
@@ -50,8 +51,8 @@ USTC=mirrors.ustc.edu.cn
 function _check_path(){
 
     _check_command_and_yum_install git
-    _check_command_and_yum install rsync
-    _check_command_and_yum install createrepo
+    _check_command_and_yum_install install rsync
+#    _check_command_and_yum_install install createrepo
 }
 
 #!/bin/bash

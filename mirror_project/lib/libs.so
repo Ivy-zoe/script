@@ -80,8 +80,8 @@ function _update_repos(){
 
 
 function _check_directory(){
-         if [  -d $1  = 0 ];then
+         if [  -d $1 ];then
          echo "$1 is ok!"
-         else mkdir $1
+         else mkdir -p $1
          fi
 }
