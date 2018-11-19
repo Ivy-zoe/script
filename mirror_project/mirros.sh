@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-
+set -x 
 if [ -e ./lib/libs.so ]; then
     source ./lib/libs.so
         if [ $? = 0 ]; then

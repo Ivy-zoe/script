@@ -4,7 +4,7 @@
 # env config
 
 Config_DIR=./config
-DATA_DIR=/Volumes/data
+DATA_DIR=/data/chaos/mirrors
 EPEL6=$DATA_DIR/epel/6
 EPEL7=$DATA_DIR/epel/7
 CentOS7=$DATA_DIR/centos/7
@@ -29,6 +29,10 @@ function Check_directory(){
     _check_directory $EPEL7
     _check_directory $CentOS6
     _check_directory $CentOS7
+    _check_directory $CentOS7/os/x86_64
+    _check_directory $CentOS7/updates/x86_64/
+    _check_directory $CentOS7/extras/x86_64/
+    _check_directory $CentOS7/centosplus/x86_64/
     _check_directory $MONGODB
     _check_directory $Mariadb
     _check_directory $Nginx
@@ -43,9 +47,9 @@ function Check_directory(){
 
 
 # url
-REDSLEVE=http://ftp.redsleeve.org/pub/steam/
+glibc_url=http://ftp.redsleeve.org/pub/steam/
 NGINX=http://nginx.org/packages/centos/6/x86_64/RPMS/
-TUNA=mirrors.tuna.tsinghua.edu.cn
+rsync_tuna=rsync://mirrors.tuna.tsinghua.edu.cn
 USTC=mirrors.ustc.edu.cn
 
 function _check_path(){
@@ -80,19 +84,11 @@ function List(){
     echo "+---------------------------------------------------------------------------------------+"
     echo "| 9      zabbix7       $TUNA         $ZABBIX7"
     echo "+---------------------------------------------------------------------------------------+"
-    echo "| 10       influxdata6         $TUNA        $influxdata6 "
-    echo "+---------------------------------------------------------------------------------------+"
-    echo "| 11       influxdata7         $TUNA        $influxdata7 "
-    echo "+---------------------------------------------------------------------------------------+"
-    echo "| 12        rock               $TUNA        $ROCK"
-    echo "+---------------------------------------------------------------------------------------+"
-    echo "| 13        docker              $TUNA        $DOCKER"
-    echo "+---------------------------------------------------------------------------------------+"
     echo "|                 Curl "
     echo "+---------------------------------------------------------------------------------------+"
-    echo "| 14      glibc        $REDSLEVE         $GLIBC"
+    echo "| 10      glibc        $REDSLEVE         $GLIBC"
     echo "+---------------------------------------------------------------------------------------+"
-    echo "| 15       nginx         $USTC        $Nginx "
+    echo "| 11       nginx         $USTC        $Nginx "
     echo "+---------------------------------------------------------------------------------------+"
 }
 
