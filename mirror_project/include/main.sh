@@ -4,7 +4,7 @@
 # env config
 
 Config_DIR=./config
-DATA_DIR=/data/chaos/mirrors
+DATA_DIR=/data/mirrors
 EPEL6=$DATA_DIR/epel/6
 EPEL7=$DATA_DIR/epel/7
 CentOS7=$DATA_DIR/centos/7
@@ -33,6 +33,9 @@ function Check_directory(){
     _check_directory $CentOS7/updates/x86_64/
     _check_directory $CentOS7/extras/x86_64/
     _check_directory $CentOS7/centosplus/x86_64/
+    _check_directory $CentOS6/os/x86_64
+    _check_directory $CentOS6/updates/x86_64
+    _check_directory $CentOS6/extras/x86_64
     _check_directory $MONGODB
     _check_directory $Mariadb
     _check_directory $Nginx
@@ -56,7 +59,7 @@ function _check_path(){
 
     _check_command_and_yum_install git
     _check_command_and_yum_install install rsync
-#    _check_command_and_yum_install install createrepo
+    _check_command_and_yum_install install createrepo
 }
 
 #!/bin/bash
