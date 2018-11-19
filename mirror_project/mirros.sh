@@ -31,6 +31,7 @@ case $1 in
         ;;
       test )
       _rsync_CentOS7
+      _rsync_CentOS6
 
       ;;
     * )
