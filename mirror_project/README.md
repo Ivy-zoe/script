@@ -113,7 +113,7 @@ mirrors/
 
 
 
-在`env.sh` 中使用了`_check_command_and_yum_install`这个函数这个函数位于 `lib/libs.so`这个库文件中，如果你使用的是非redhat系发行版你可以手动解决软件依赖`rsync,createrepo`来去解决这个问题
+在`env.sh` 中使用了`_check_command_and_yum_install`这个函数去安装需要的软件包这个函数位于 `lib/libs.so`这个库文件中，如果你使用的是非redhat系发行版你可以手动解决软件依赖`rsync,createrepo`来去解决这个问题
 
 
 
@@ -289,7 +289,7 @@ mirrors/
 
 
 
-1. 使用
+2. 使用
 
    其他节点的服务器可以通过以下命令一键配置yum源
 
