@@ -76,5 +76,6 @@ function _check_path(){
 
     _check_command_and_yum_install  rsync
     _check_command_and_yum_install  createrepo
+    _check_command_and_yum_install wget
 }
 
