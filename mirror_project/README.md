@@ -1,4 +1,4 @@
-# Rsync Script
+# Mirrors Script
 
 Version:0.7
 status: N/A
@@ -28,7 +28,7 @@ sudo zypper in git
 git clone https://github.com/slmoby/script
 ```
 
-需要的其他软件
+需要的软件列表
 
 - rsync
 
@@ -39,6 +39,46 @@ git clone https://github.com/slmoby/script
 
 
   ##  环境预设
+
+
+
+
+
+
+
+
+
+项目目录树
+
+```
+├── ChangeLog
+├── README.md
+├── add.sh
+├── config
+│   ├── centos6.list
+│   ├── centos7.list
+│   ├── epel6.list
+│   ├── epel7.list
+│   ├── gilbc-2.15-wget-list
+│   ├── glibc2.17_for_6-wget-list
+│   ├── mariadb.list
+│   ├── mongodb3.6.list
+│   ├── mysql.list
+│   ├── nginx-wget-list
+│   ├── remi.list
+│   ├── zabbix-for-centos6.list
+│   └── zabbix-for-centos7.list
+├── include
+│   ├── env.sh
+│   ├── run.sh
+│   ├── stack.sh
+│   └── static-repo.sh
+├── lib
+│   └── libs.so
+└── mirros.sh
+
+3 directories, 22 files
+```
 
 
 
@@ -108,46 +148,12 @@ mirrors/
         │   └── x86_64
         └── x86_64
 
-44 directories, 0 files
+44 directories
 ```
 
 
 
 在`env.sh` 中使用了`_check_command_and_yum_install`这个函数去安装需要的软件包这个函数位于 `lib/libs.so`这个库文件中，如果你使用的是非redhat系发行版你可以手动解决软件依赖`rsync,createrepo`来去解决这个问题
-
-
-
-项目目录树
-
-```
-├── ChangeLog
-├── README.md
-├── add.sh
-├── config
-│   ├── centos6.list
-│   ├── centos7.list
-│   ├── epel6.list
-│   ├── epel7.list
-│   ├── gilbc-2.15-wget-list
-│   ├── glibc2.17_for_6-wget-list
-│   ├── mariadb.list
-│   ├── mongodb3.6.list
-│   ├── mysql.list
-│   ├── nginx-wget-list
-│   ├── remi.list
-│   ├── zabbix-for-centos6.list
-│   └── zabbix-for-centos7.list
-├── include
-│   ├── env.sh
-│   ├── run.sh
-│   ├── stack.sh
-│   └── static-repo.sh
-├── lib
-│   └── libs.so
-└── mirros.sh
-
-3 directories, 22 files
-```
 
 
 
@@ -208,10 +214,11 @@ mirrors/
 
    因为内置库的缘故你可以非常简单的添加一个镜像，例子Docker的镜像站点
 
-   首先在`env.sh` 中添加你的镜像站点存放位置
+   首先在`env.sh` 中添加你的镜像站点存放位置，和web站点访问位置
 
    ```bash
    DOCKER-CE=$DATA_DIR/docker
+   WEB_DOCKER=$MIRRORS_WEB/docker
    ```
 
    再在`include/stack.sh`中添加以下内容
@@ -260,6 +267,28 @@ mirrors/
    ```
 
 
+
+5. 增加repo文件
+
+   ​	在`include/static-repo.sh`文件中增加rpeo文件,在这个文件中我定义了一个函数体`_create_repos_file` 直接在里面添加如下
+
+   ```bash
+   
+   cat > $REPO/docker-ce-7.repo << EOF
+   	[docker-ce]
+   	name = docker-ce
+   	baseurl = http://$IP/$WEB_DOCKER
+   	enable = 1
+   	gpgcheck = 0
+   EOF
+   
+   ```
+
+   更新repos文件
+
+   ```sh
+   ./mirros.sh creatrepos
+   ```
 
 
 ## 局域网中的机器使用源
