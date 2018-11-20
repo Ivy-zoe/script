@@ -1,0 +1,13 @@
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-1.14.1-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-debuginfo-1.14.1-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-module-geoip-1.14.1-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-module-geoip-debuginfo-1.14.1-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-module-image-filter-1.14.1-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-module-image-filter-debuginfo-1.14.1-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-module-njs-1.14.1.0.2.5-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-module-njs-debuginfo-1.14.1.0.2.5-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-module-perl-1.14.1-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-module-perl-debuginfo-1.14.1-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-module-xslt-1.14.1-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-module-xslt-debuginfo-1.14.1-1.el6.ngx.x86_64.rpm
+http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-nr-agent-2.0.0-12.el6.ngx.noarch.rpm

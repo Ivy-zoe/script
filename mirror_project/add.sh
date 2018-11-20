@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Author: Li Guanghui
+# Author: chaos
 
+# server
+
+SERVER=10.0.0.100
 # Set error color
 
 Color_Text()
@@ -20,16 +23,14 @@ if [ $(id -u) != "0" ]; then
     Echo_Red "Error: You are not root."
     exit 1
 fi
+function _check_directory(){
+         if [  -d $1 ];then
+         echo "$1 is ok!"
+         else mkdir -p $1
+         fi
+}
 
-# Check if OS is indeed CentOS
 
-if grep -Eqi "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then :
-    #echo "CentOS Detected."
-    #pass
-else
-    Echo_Red "Error: This is not CentOS. RHEL, Fedora, or any other OS is not supported."
-    exit 1
-fi
 
 # Get CentOS version info: 5/6/7
 
@@ -37,24 +38,18 @@ CENTOS_VERSION_BY_RPM=`rpm -q --queryformat '%{VERSION}' centos-release`
 CENTOS_VERSION_BY_RELEASE=`cat /etc/redhat-release | grep -o '[0-9]\.[0-9]'`
 
 # Repo files backup
-
+_check_directory /root/backup
 Repo_Backup()
 {
-    if [ -f "/etc/yum.repos.d/CentOS-Base.repo" ]; then
-        mv --backup=t /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
-    fi
-
-    if [ -f "/etc/yum.repos.d/epel.repo" ]; then
-	mv --backup=t /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
-    fi
+	mv /etc/yum.repos.d/* /root/backup
 }
 
 # Repo files install
 
 Repo_Install()
 {
-	BASE_REPO_URL="http://mirrors.deppon.com/repo/centos-"${CENTOS_VERSION_BY_RPM}".repo"
-	EPEL_REPO_URL="http://mirrors.deppon.com/repo/epel-"${CENTOS_VERSION_BY_RPM}".repo"
+	BASE_REPO_URL="http://$SERVER/mirrors/repo/centos-"${CENTOS_VERSION_BY_RPM}".repo"
+	EPEL_REPO_URL="http://$SERVER/mirrors/repo/epel-"${CENTOS_VERSION_BY_RPM}".repo"
 	curl -sS -o /etc/yum.repos.d/CentOS-Base.repo $BASE_REPO_URL
 	curl -sS -o /etc/yum.repos.d/epel.repo $EPEL_REPO_URL
 }

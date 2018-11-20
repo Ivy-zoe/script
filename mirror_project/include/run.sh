@@ -1,69 +1,5 @@
 #!/bin/bash
 
-
-# env config
-
-Config_DIR=./config
-DATA_DIR=/data/mirrors
-EPEL6=$DATA_DIR/epel/6
-EPEL7=$DATA_DIR/epel/7
-CentOS7=$DATA_DIR/centos/7
-CentOS6=$DATA_DIR/centos/6
-MONGODB=$DATA_DIR/mongodb/6
-Mariadb=$DATA_DIR/mariadb/7
-Nginx=$DATA_DIR/nginx/6
-REMI=$DATA_DIR/remi/6
-ZABBIX6=$DATA_DIR/zabbix/6
-ZABBIX7=$DATA_DIR/zabbix/7
-GLIBC=$DATA_DIR/glibc/6
-influxdata7=$DATA_DIR/influxdata/7
-influxdata6=$DATA_DIR/influxdata/6
-MYSQL57=$DATA_DIR/mysql57/7
-
-# check dir
-
-function Check_directory(){
-
-    _check_directory $DATE_DIR
-    _check_directory $EPEL6
-    _check_directory $EPEL7
-    _check_directory $CentOS6
-    _check_directory $CentOS7
-    _check_directory $CentOS7/os/x86_64
-    _check_directory $CentOS7/updates/x86_64/
-    _check_directory $CentOS7/extras/x86_64/
-    _check_directory $CentOS7/centosplus/x86_64/
-    _check_directory $CentOS6/os/x86_64
-    _check_directory $CentOS6/updates/x86_64
-    _check_directory $CentOS6/extras/x86_64
-    _check_directory $MONGODB
-    _check_directory $Mariadb
-    _check_directory $Nginx
-    _check_directory $REMI
-    _check_directory $ZABBIX7
-    _check_directory $GLIBC
-    _check_directory $influxdata6
-    _check_directory $influxdata7
-    _check_directory $MYSQL57
-}
-
-
-
-# url
-glibc_url=http://ftp.redsleeve.org/pub/steam/
-NGINX=http://nginx.org/packages/centos/6/x86_64/RPMS/
-rsync_tuna=rsync://mirrors.tuna.tsinghua.edu.cn
-USTC=mirrors.ustc.edu.cn
-
-function _check_path(){
-
-    _check_command_and_yum_install git
-    _check_command_and_yum_install install rsync
-    _check_command_and_yum_install install createrepo
-}
-
-#!/bin/bash
-
 function List(){
     clear
     echo "+---------------------------------------------------------------------------------------+"
@@ -81,7 +17,7 @@ function List(){
     echo "+---------------------------------------------------------------------------------------+"
     echo "| 6       remi           $TUNA       $REMI"
     echo "+---------------------------------------------------------------------------------------+"
-    echo "| 7       mongodb     $TUNA        $MONGODB"
+    echo "| 7       mongodb     $TUNA        $MONGODB6"
     echo "+---------------------------------------------------------------------------------------+"
     echo "| 8       zabbix6       $TUNA        $ZABBIX6"
     echo "+---------------------------------------------------------------------------------------+"
@@ -112,3 +48,4 @@ function RUN(){
     echo "|Use the corresponding image name to sync, or use all to sync all"
     echo "+------------------------------------------------------------------------+"
 }
+
