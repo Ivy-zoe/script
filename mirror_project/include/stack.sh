@@ -38,8 +38,14 @@ function _rsync_EPEL7(){
 }
 
 function _rsync_mariadb7(){
-	_rsync_mirrors $Config_DIR/mariadb.list $rsync_tuna/mariadb/yum/10.3/centos/7.4/x86_64/ $Mariadb/x86_64
-	_update_repos $Mariadb/x86_64
+	_rsync_mirrors $Config_DIR/mariadb.list $rsync_tuna/mariadb/yum/10.3/centos/7.4/x86_64/ $Mariadb7/x86_64
+	_update_repos $Mariadb7/x86_64
+
+}
+
+function _rsync_mariadb6(){
+	_rsync_mirrors $Config_DIR/mariadb.list $rsync_tuna/mariadb/yum/10.3/centos/6/x86_64/ $Mariadb6/x86_64
+	_update_repos $Mariadb6/x86_64
 
 }
 

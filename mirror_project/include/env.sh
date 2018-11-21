@@ -14,7 +14,8 @@ EPEL7=$DATA_DIR/epel/7
 CentOS7=$DATA_DIR/centos/7
 CentOS6=$DATA_DIR/centos/6
 MONGODB6=$DATA_DIR/mongodb/6
-Mariadb=$DATA_DIR/mariadb/7
+Mariadb7=$DATA_DIR/mariadb/7
+Mariadb6=$DATA_DIR/mariadb/6
 Nginx=$DATA_DIR/nginx/6
 REMI6=$DATA_DIR/remi/6
 REMI7=$DATA_DIR/remi/7
@@ -30,7 +31,8 @@ WEB_EPEL7=$MIRRORS_WEB/epel/7
 WEB_CentOS7=$MIRRORS_WEB/centos/7
 WEB_CentOS6=$MIRRORS_WEB/centos/6
 WEB_MONGODB6=$MIRRORS_WEB/mongodb/6
-WEB_Mariadb=$MIRRORS_WEB/mariadb/7
+WEB_Mariadb6=$MIRRORS_WEB/mariadb/6
+WEB_Mariadb7=$MIRRORS_WEB/mariadb/7
 WEB_NGINX=$MIRRORS_WEB/nginx/6
 WEB_REMI=$MIRRORS_WEB/remi/6
 WEB_REMI_7=$MIRRORS_WEB/remi/7
@@ -54,7 +56,8 @@ function Check_directory(){
     _check_directory $CentOS6/extras/x86_64
     _check_directory $EPEL6/x86_64/
     _check_directory $EPEL7/x86_64
-    _check_directory $Mariadb/x86_64
+    _check_directory $Mariadb7/x86_64
+    _check_directory $Mariadb6/x86_64
     _check_directory $REMI6/56/x86_64/
     _check_directory $REMI6/72/x86_64/
     _check_directory $REMI7/56/x86_64/

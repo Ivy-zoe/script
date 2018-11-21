@@ -107,11 +107,17 @@ EOF
 	cat > $REPO/mariadb-7.repo << EOF
 [mariadb]
 name = mariadb
-baseurl = http://$IP/$WEB_Mariadb
+baseurl = http://$IP/$WEB_Mariadb7
 enable = 1
 gpgcheck = 0
 EOF
-
+	cat > $REPO/mariadb-6.repo << EOF
+[mariadb]
+name = mariadb
+baseurl = http://$IP/$WEB_Mariadb6
+enable = 1
+gpgcheck = 0
+EOF
 
 	cat > $REPO/nginx-6.repo << EOF
 [nginx]
