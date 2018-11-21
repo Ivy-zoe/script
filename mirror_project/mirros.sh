@@ -86,6 +86,7 @@ case $1 in
         _rsync_remi_56_7
         _rsync_remi_72_7
         _rsync_mariadb7
+        _rsync_mariadb6
 
     ;;
     creatrepos )
