@@ -44,14 +44,25 @@ function _rsync_mariadb7(){
 }
 
 function _rsync_remi_56(){
-	_rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/6/php56/x86_64/ $REMI/56/x86_64/
-	_update_repos $REMI/56/x86_64/
+	_rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/6/php56/x86_64/ $REMI6/56/x86_64/
+	_update_repos $REMI6/56/x86_64/
 
 }
 
 function _rsync_remi_72(){
-	_rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/6/php72/x86_64/ $REMI/72/x86_64/
-	_update_repos $REMI/72/x86_64/
+	_rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/6/php72/x86_64/ $REMI6/72/x86_64/
+	_update_repos $REMI6/72/x86_64/
+}
+
+function _rsync_remi_56_7(){
+	_rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/7/php56/x86_64/ $REMI7/56/x86_64/
+	_update_repos $REMI7/56/x86_64/
+
+}
+
+function _rsync_remi_72_7(){
+	_rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/7/php72/x86_64/ $REMI7/72/x86_64/
+	_update_repos $REMI7/72/x86_64/
 }
 
 function _zabbix_6(){

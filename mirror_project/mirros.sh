@@ -83,6 +83,8 @@ case $1 in
         _wget_glibc
         _mongodb_3.6
         _nginx_centos6
+        _rsync_remi_56_7
+        _rsync_remi_72_7
 
     ;;
     creatrepos )

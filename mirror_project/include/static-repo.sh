@@ -122,21 +122,38 @@ gpgcheck = 0
 EOF
 
 
-	cat > $REPO/remi-6.repo << EOF
+	cat > $REPO/remi56-6.repo << EOF
 [remi]
 name = remi
-baseurl = http://$IP/$WEB_REMI/x86_64
+baseurl = http://$IP/$WEB_REMI/56/x86_64
 enable = 1
 gpgcheck = 0
 EOF
 
-	cat > $REPO/remi-6.repo << EOF
+	cat > $REPO/remi72-6.repo << EOF
 [remi]
 name = remi
-baseurl = http://$IP/$WEB_REMI/x86_64
+baseurl = http://$IP/$WEB_REMI/72/x86_64
 enable = 1
 gpgcheck = 0
 EOF
+	cat > $REPO/remi56-7.repo << EOF
+[remi]
+name = remi
+baseurl = http://$IP/$WEB_REMI_7/56/x86_64
+enable = 1
+gpgcheck = 0
+EOF
+
+	cat > $REPO/remi72-7.repo << EOF
+[remi]
+name = remi
+baseurl = http://$IP/$WEB_REMI_7/72/x86_64
+enable = 1
+gpgcheck = 0
+EOF
+
+
 
 	cat > $REPO/zabbix-6.repo << EOF
 [zabbix]
