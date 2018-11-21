@@ -4,7 +4,7 @@
 
 # server
 
-SERVER=10.0.0.100
+SERVER=192.168.10.45
 # Set error color
 
 Color_Text()
@@ -38,14 +38,15 @@ CENTOS_VERSION_BY_RPM=`rpm -q --queryformat '%{VERSION}' centos-release`
 CENTOS_VERSION_BY_RELEASE=`cat /etc/redhat-release | grep -o '[0-9]\.[0-9]'`
 
 # Repo files backup
-_check_directory /root/backup
+
 Repo_Backup()
 {
-	mv /etc/yum.repos.d/* /root/backup
+	_check_directory /root/backup
+	mv  /etc/yum.repos.d/* /root/backup
 }
 
 # Repo files install
-
+#sh -c "$(curl -fsSL http://192.168.10.45/repo/add.sh)"
 Repo_Install()
 {
 	BASE_REPO_URL="http://$SERVER/mirrors/repo/centos-"${CENTOS_VERSION_BY_RPM}".repo"

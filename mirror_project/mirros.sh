@@ -89,8 +89,9 @@ case $1 in
         _create_repos_file
     ;;
     httpd )
-        links_for_mirrors
         _httpd
+        links_for_mirrors
+  
     ;;
 
     httpd_firewalld )
