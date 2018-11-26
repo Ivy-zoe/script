@@ -46,7 +46,7 @@ Repo_Backup()
 }
 
 # Repo files install
-#sh -c "$(curl -fsSL http://192.168.10.45/repo/add.sh)"
+#sh -c "$(curl -fsSL http://192.168.10.45/mirrors/repo/add.sh)"
 Repo_Install()
 {
 	BASE_REPO_URL="http://$SERVER/mirrors/repo/centos-"${CENTOS_VERSION_BY_RPM}".repo"

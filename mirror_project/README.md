@@ -323,7 +323,7 @@ mirrors/
    其他节点的服务器可以通过以下命令一键配置yum源
 
    ```
-   curl -o $SERVER/repo/add.sh | sudo  bash 
+   sh -c "$(curl -fsSL http://$SERVER/mirrors/repo/add.sh
    ```
 
    $SERVER 为你的yum源服务器
