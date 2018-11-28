@@ -34,7 +34,7 @@ WEB_MONGODB6=$MIRRORS_WEB/mongodb/6
 WEB_Mariadb6=$MIRRORS_WEB/mariadb/6
 WEB_Mariadb7=$MIRRORS_WEB/mariadb/7
 WEB_NGINX=$MIRRORS_WEB/nginx/6
-WEB_REMI=$MIRRORS_WEB/remi/6
+WEB_REMI_6=$MIRRORS_WEB/remi/6
 WEB_REMI_7=$MIRRORS_WEB/remi/7
 WEB_ZABBIX6=$MIRRORS_WEB/zabbix/6
 WEB_ZABBIX7=$MIRRORS_WEB/zabbix/7
@@ -85,4 +85,3 @@ function _check_path(){
     _check_command_and_yum_install  createrepo
     _check_command_and_yum_install wget
 }
-

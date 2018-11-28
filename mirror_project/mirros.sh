@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-#set -x 
+#set -x
 if [ -e ./lib/libs.so ]; then
     source ./lib/libs.so
         if [ $? = 0 ]; then
@@ -46,66 +46,59 @@ case $1 in
     mariadb )
         _rsync_mariadb7
         ;;
-    remi56 )
-        _rsync_remi_56
-        ;;
-    remi72 )
-        _rsync_remi_72
-        ;;
+
     zabbix6 )
         _zabbix_6
-    ;;
-    zabbix7)
-        _zabbix_7
+            ;;
+        zabbix7)
+            _zabbix_7
 
-    ;; 
-    glibc )
-        _wget_glibc
+            ;;
+        glibc )
+            _wget_glibc
 
-    ;;
-    mongodb)
-        _mongodb_3.6
-    ;;
-    nginx )
-        _nginx_centos6
-    ;;
+            ;;
+        mongodb)
+            _mongodb_3.6
+            ;;
+        nginx )
+            _nginx_centos6
+            ;;
 
-    all )
-        _rsync_CentOS7
-        _rsync_CentOS6
-        _rsync_EPEL6
-        _rsync_EPEL7
-        _rsync_mariadb7
-        _rsync_remi_56
-        _rsync_remi_72
-        _zabbix_6
-        _zabbix_7
-        _wget_glibc
-        _mongodb_3.6
-        _nginx_centos6
-        _rsync_remi_56_7
-        _rsync_remi_72_7
-        _rsync_mariadb7
-        _rsync_mariadb6
+        all )
+            _rsync_CentOS7
+            _rsync_CentOS6
+            _rsync_EPEL6
+            _rsync_EPEL7
+            _rsync_mariadb7
+            _rsync_remi_56
+            _rsync_remi_72
+            _zabbix_6
+            _zabbix_7
+            _wget_glibc
+            _mongodb_3.6
+            _nginx_centos6
+            _rsync_remi_56_7
+            _rsync_remi_72_7
+            _rsync_mariadb7
+            _rsync_mariadb6
+            _rsync_remi_7
+            _rsync_remi_6
+            ;;
+        creatrepos )
+            _create_repos_file
+            ;;
+        httpd )
+            _httpd
+            links_for_mirrors
 
-    ;;
-    creatrepos )
-        _create_repos_file
-    ;;
-    httpd )
-        _httpd
-        links_for_mirrors
-  
-    ;;
+            ;;
 
-    httpd_firewalld )
-        _firewalld_httpd
-    ;;
-    * )
-    RUN
+        httpd_firewalld )
+            _firewalld_httpd
+            ;;
+        * )
+            RUN
 
-    ;;
+            ;;
 esac
-
-
-
