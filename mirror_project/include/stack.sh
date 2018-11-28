@@ -115,3 +115,14 @@ function _nginx_centos6(){
     _wget_incloud_file	$Config_DIR/nginx-wget-list	$Nginx
     _update_repos $Nginx
 }
+
+
+function _glpi9.1_centos6(){
+    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi91/x86_64/ $GLPI91
+    _update_repos $GLPI91/x86_64
+}
+
+function _glpi9.3_centos6(){
+    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi93/x86_64/ $GLPI93
+    _update_repos $GLPI93/x86_64
+}

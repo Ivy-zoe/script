@@ -7,43 +7,41 @@ Config_DIR=./config
 DATA_DIR=/data/mirrors
 #DATA_DIR=/Users/chaos/Desktop/tmp
 
-# data
-#DATA_DIR=/Users/chaos/Desktop/tmp
+
+#EPEL
 EPEL6=$DATA_DIR/epel/6
 EPEL7=$DATA_DIR/epel/7
+# CentOS
 CentOS7=$DATA_DIR/centos/7
 CentOS6=$DATA_DIR/centos/6
+# Mongodb
 MONGODB6=$DATA_DIR/mongodb/6
+# Mariadb
 Mariadb7=$DATA_DIR/mariadb/7
 Mariadb6=$DATA_DIR/mariadb/6
+# Nginx
 Nginx=$DATA_DIR/nginx/6
+# REMI
 REMI6=$DATA_DIR/remi/6
 REMI7=$DATA_DIR/remi/7
+# zabbix
 ZABBIX6=$DATA_DIR/zabbix/6
 ZABBIX7=$DATA_DIR/zabbix/7
+# Glibc
 GLIBC=$DATA_DIR/glibc/6
+# Repos
 REPO=$DATA_DIR/repo
+# Glpi
+GLPI_91=$DATA_DIR/glpi/6/91
+GLPI_93=$DATA_DIR/glpi/6/93
 
-# web
-MIRRORS_WEB=mirrors
-WEB_EPEL6=$MIRRORS_WEB/epel/6
-WEB_EPEL7=$MIRRORS_WEB/epel/7
-WEB_CentOS7=$MIRRORS_WEB/centos/7
-WEB_CentOS6=$MIRRORS_WEB/centos/6
-WEB_MONGODB6=$MIRRORS_WEB/mongodb/6
-WEB_Mariadb6=$MIRRORS_WEB/mariadb/6
-WEB_Mariadb7=$MIRRORS_WEB/mariadb/7
-WEB_NGINX=$MIRRORS_WEB/nginx/6
-WEB_REMI_6=$MIRRORS_WEB/remi/6
-WEB_REMI_7=$MIRRORS_WEB/remi/7
-WEB_ZABBIX6=$MIRRORS_WEB/zabbix/6
-WEB_ZABBIX7=$MIRRORS_WEB/zabbix/7
-WEB_GLIBC=$MIRRORS_WEB/glibc/6
-WEB_REPO=$MIRRORS_WEB/repo
+#### ------------
+#### ------------
+#### ------------
+#### ---WEB------
+WEB=mirrors
 
-
-
-# check dir
+## END
 
 function Check_directory(){
 
@@ -70,6 +68,8 @@ function Check_directory(){
     _check_directory $MONGODB6
     _check_directory $Nginx
     _check_directory $REPO
+    _check_directory $GLPI_91
+    _check_directory $GLPI_93
 
 }
 
