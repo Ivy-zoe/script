@@ -224,4 +224,19 @@ baseurl = http://$IP/$WEB/GLIBC
 enable = 1
 gpgcheck = 0
 EOF
+
+    cat > $REPO/glpi-6.repo << EOF
+[glpi]
+name = glpi
+baseurl = http://$IP/glpi/6
+enable = 1
+gpgcheck = 0
+EOF
+    cat > $REPO/glpi-7.repo << EOF
+[glpi]
+name = glpi
+baseurl = http://$IP/glpi/7
+enable = 1
+gpgcheck = 0
+EOF
 }

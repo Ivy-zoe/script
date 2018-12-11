@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-#set -x
+set -x
 if [ -e ./lib/libs.so ]; then
     source ./lib/libs.so
         if [ $? = 0 ]; then
@@ -93,9 +93,17 @@ case $1 in
             links_for_mirrors
 
             ;;
+        remi72 )
+                _rsync_remi_6
+                _rsync_remi_72
+            ;;
 
         httpd_firewalld )
             _firewalld_httpd
+            ;;
+        glpi )
+            _glpi9.1_centos6
+            _glpi9.3_centos6
             ;;
         * )
             RUN

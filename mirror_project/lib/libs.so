@@ -21,7 +21,7 @@ function _check_dir_file_exist()
 
 function _rsync_mirrors()
 {
-rsync -aqz   --exclude-from=$1 $2  $3
+rsync -avz  --exclude-from=$1 $2  $3
 }
 
 

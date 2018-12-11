@@ -118,11 +118,11 @@ function _nginx_centos6(){
 
 
 function _glpi9.1_centos6(){
-    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi91/x86_64/ $GLPI91
-    _update_repos $GLPI91/x86_64
+    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi91/x86_64/ $GLPI_91
+    _update_repos $GLPI_91
 }
 
 function _glpi9.3_centos6(){
-    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi93/x86_64/ $GLPI93
-    _update_repos $GLPI93/x86_64
+    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi93/x86_64/ $GLPI_93
+    _update_repos $GLPI_93
 }
