@@ -1,0 +1,9 @@
+https://www-us.apache.org/dist/hbase/2.1.1/hbase-2.1.1-bin.tar.gz
+https://raw.githubusercontent.com/naver/pinpoint/master/hbase/scripts/hbase-create.hbase
+https://github.com/naver/pinpoint/blob/master/web/src/main/resources/sql/CreateTableStatement-mysql.sql
+https://github.com/naver/pinpoint/blob/master/web/src/main/resources/sql/SpringBatchJobRepositorySchema-mysql.sql
+https://github.com/naver/pinpoint/releases/download/1.8.0/pinpoint-web-1.8.0.war
+https://github.com/naver/pinpoint/releases/download/1.8.0/pinpoint-collector-1.8.0.war
+https://github.com/naver/pinpoint/releases/download/1.8.0/pinpoint-collector-1.8.0.war
+http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz
+https://github.com/naver/pinpoint/releases/download/1.8.0/pinpoint-agent-1.8.0.tar.gz
