@@ -29,6 +29,9 @@ ZABBIX6=$DATA_DIR/zabbix/6
 ZABBIX7=$DATA_DIR/zabbix/7
 # Glibc
 GLIBC=$DATA_DIR/glibc/6
+
+# pinpoint
+pinpoint=$DATA_DIR/pinpoint
 # Repos
 REPO=$DATA_DIR/repo
 # Glpi
@@ -70,7 +73,7 @@ function Check_directory(){
     _check_directory $REPO
     _check_directory $GLPI_91
     _check_directory $GLPI_93
-
+    _check_directory $pinpoint
 }
 
 

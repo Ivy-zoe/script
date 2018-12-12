@@ -116,6 +116,10 @@ function _nginx_centos6(){
     _update_repos $Nginx
 }
 
+function _pinpoint(){
+    _wget_incloud_file $Config_DIR/pinpoint-wget-list $pinpoint
+}
+
 
 function _glpi9.1_centos6(){
     _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi91/x86_64/ $GLPI_91
