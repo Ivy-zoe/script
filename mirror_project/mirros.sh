@@ -103,6 +103,10 @@ case $1 in
             _glpi9.1_centos6
             _glpi9.3_centos6
             ;;
+        pinpoint )
+
+            _pinpoint
+            ;;
         * )
             RUN
 
