@@ -5,6 +5,11 @@ author:
 - by chaos
 ---
 
+# 版本
+
+Version: 0.8-alpine
+
+
 # 下载
 
 需要安装git
@@ -28,6 +33,8 @@ git clone https://github.com/slmoby/script
 - createrepo
 
 - httpd
+
+- wget 
 
 # 环境预设
 
@@ -241,7 +248,7 @@ EOF
 ./mirros.sh httpd 
 ```
 
-即可安装并运行httpd，如果你的防火墙是开启的状态你可以运行
+即可安装并运行httpd，如果你的防火墙和selinux是开启的状态你可以运行
 
 ```
 ./mirrors.sh httpd_firewalld
@@ -258,7 +265,7 @@ EOF
 其他节点的服务器可以通过以下命令一键配置yum源
 
 ```
-sh -c "$(curl -fsSL http://$SERVER/mirrors/repo/add.sh
+sh -c "$(curl -fsSL http://$SERVER/mirrors/repo/add.sh)"
 ```
 
 $SERVER 为你的yum源服务器
