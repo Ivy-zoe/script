@@ -91,10 +91,7 @@ case $1 in
             links_for_mirrors
 
             ;;
-        remi72 )
-                _rsync_remi_6
-                _rsync_remi_72
-            ;;
+
 
         httpd_firewalld )
             _firewalld_httpd
@@ -104,8 +101,15 @@ case $1 in
             _glpi9.3_centos6
             ;;
         pinpoint )
-
             _pinpoint
+            ;;
+        remi )
+            _rsync_remi_6
+            _rsync_remi_56_6
+            _rsync_remi_72_6
+            _rysnc_remi_7
+            _rsync_remi_56_7
+            _rsync_remi_72_7
             ;;
         * )
             RUN

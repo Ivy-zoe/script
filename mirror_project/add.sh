@@ -26,9 +26,8 @@ fi
 _check_directory(){
          if [  -d $1 ];then
          echo "$1 is ok!"
-         else 
-         	Echo_Red "$1 not found!"
-         	exit 9
+         else
+         	mkdir -p $1
          fi
 }
 

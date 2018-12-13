@@ -149,14 +149,6 @@ gpgcheck = 0
 EOF
 
     cat > $REPO/remi72-6.repo << EOF
-
-[remi]
-name = remi
-baseurl = http://$IP/$WEB/remi/x86_64
-enable = 1
-gpgcheck = 0
-
-
 [remi72]
 name = remi72
 baseurl = http://$IP/$WEB/remi/6/72/x86_64
@@ -179,13 +171,6 @@ gpgcheck = 0
 EOF
 
     cat > $REPO/remi72-7.repo << EOF
-[remi]
-name = remi
-baseurl = http://$IP/$WEB/remi/7/x86_64
-enable = 1
-gpgcheck = 0
-
-
 [remi72]
 name = remi72
 baseurl = http://$IP/$WEB/remi/7/72/x86_64
