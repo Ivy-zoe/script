@@ -23,7 +23,7 @@ if [ $(id -u) != "0" ]; then
     Echo_Red "Error: You are not root."
     exit 1
 fi
-function _check_directory(){
+_check_directory(){
          if [  -d $1 ];then
          echo "$1 is ok!"
          else 
