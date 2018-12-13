@@ -83,7 +83,7 @@ case $1 in
             _rsync_remi_7
             _rsync_remi_6
             ;;
-        creatrepos )
+        createrepos )
             _create_repos_file
             ;;
         httpd )

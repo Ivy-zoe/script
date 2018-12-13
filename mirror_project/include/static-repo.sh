@@ -102,6 +102,13 @@ baseurl = http://$IP/$WEB/mongodb/6
 enable = 1
 gpgcheck = 0
 EOF
+    cat > $REPO/mongodb-7.repo << EOF
+[epel]
+name = epel
+baseurl = http://$IP/$WEB/mongodb/7
+enable = 1
+gpgcheck = 0
+EOF
 
     cat > $REPO/mariadb-7.repo << EOF
 [mariadb]
