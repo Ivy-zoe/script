@@ -30,7 +30,14 @@ function Install_Dokcer(){
   	if [ -f /etc/yum.repos.d/docker.repo ]; then
   		echo "You Docker repos is Ok!"
   	else
-  		curl -O https://raw.githubusercontent.com/slmoby/script/master/docker/CentOS/config/docker.repo && mv docker.repo /etc/yum.repos.d/docker.repo
+  		    cat > /etc/yum.repos.d/docker.repo << EOF
+[docker-ce]
+name = docker-ce
+baseurl = http://mirrors.ustc.edu.cn/docker-ce/linux/centos/7/x86_64/stable
+enable = 1
+gpgcheck = 0
+
+EOF
   	fi
   	yum makecache
   	yum install docker-ce -y

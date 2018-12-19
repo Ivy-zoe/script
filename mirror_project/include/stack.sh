@@ -67,7 +67,7 @@ function _rsync_remi_72_6(){
 }
 
 function _rysnc_remi_7(){
-    _rsync_mirrors $Config_Dir/remi.list $rsync_tuna/remi/enterprise/7/remi/x86_64/ $REMI7
+    _rsync_mirrors $Config_DIR/remi.list  $rsync_tuna/remi/enterprise/7/remi/x86_64/ $REMI7
     _update_repos $REMI7/x86_64
 }
 
