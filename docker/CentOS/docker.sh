@@ -2,9 +2,6 @@
 
 source /etc/profile
 
-set -x
-
-
 function Check_System(){
 	yum install epel-release  -y
 }
