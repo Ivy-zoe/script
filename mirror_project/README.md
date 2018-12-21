@@ -9,6 +9,13 @@ author:
 
 Version: 0.8-alpine
 
+# 项目说明
+mirrors_project是为了安全考虑在局域网内部建立一个镜像站的项目，它包含了一下功能。
+
+- 更新同步
+- 生成repodata文件
+- 一件配置yum源
+
 
 # 下载
 
@@ -184,28 +191,8 @@ function _rsync_docker_for_centos7(){
 
 ```sh
 case $1 in
-    status )
-        ;;
-
-    check )
-    _check_path
-    Check_directory
-        ;;
-    list )
-        List
-        ;;
-      test )
-        _mongodb_3.6
-
-      ;;
       docker )
       _rsync_docker_for_centos7
-      
-      ;;
-    * )
-    RUN
-
-    ;;
 esac
 ```
 
@@ -224,7 +211,7 @@ esac
 cat > $REPO/docker-ce-7.repo << EOF
 	[docker-ce]
 	name = docker-ce
-	baseurl = http://$IP/$WEB_DOCKER
+	baseurl = http://$IP/$WEB/$DOCKER
 	enable = 1
 	gpgcheck = 0
 EOF
@@ -262,10 +249,56 @@ EOF
 
 > 使用
 
-其他节点的服务器可以通过以下命令一键配置yum源
+> 查看帮助
 
-```
-sh -c "$(curl -fsSL http://$SERVER/mirrors/repo/add.sh)"
+Tips: $SERVER替换为你的服务器地址
+
+```bash
+curl -fsSL http://$SERVER/mirrors/repo/add.sh | bash -s help
 ```
 
-$SERVER 为你的yum源服务器
+
+> 一键配置所有源
+
+```bash
+curl -fsSL http://$SERVER/mirrors/repo/add.sh | bash -s all
+```
+
+> Base 源配置
+
+Tips: base源包括了 CentOSx.x的源和epel.x的源
+
+```bash
+curl -fsSL http://$SERVER/mirrors/repo/add.sh | bash -s init_base
+```
+
+> Zabbix 源配置
+
+```bash
+curl -fsSL http://$SERVER/mirrors/repo/add.sh | bash -s zabbix
+```
+
+> Remi 源配置
+
+```bash
+curl -fsSL http://$SERVER/mirrors/repo/add.sh | bash -s remi
+```
+
+> mongodb 源配置
+
+```bash
+curl -fsSL http://$SERVER/mirrors/repo/add.sh | bash -s mongodb
+```
+
+> MariaDB 源配置
+
+```bash
+curl -fsSL http://$SERVER/mirrors/repo/add.sh | bash -s mariadb
+```
+
+> Nginx 源配置
+
+```bash
+curl -fsSL http://$SERVER/mirrors/repo/add.sh | bash -s nginx
+```
+
