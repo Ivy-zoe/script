@@ -32,6 +32,11 @@ function _firewalld_httpd(){
 
 IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d '/')
 
+
+function _chage_add_repos(){
+    cp ./add.sh $DATA_DIR/repo/add.sh
+    sed -i "s/10.0.0.10/${IP}/g" $DATA_DIR/repo/add.sh
+}
 function _create_repos_file(){
     cat > $REPO/centos-7.repo << EOF
 [base]
@@ -143,7 +148,7 @@ gpgcheck = 0
 
 [remi56]
 name = remi56
-baseurl = http://$IP/$WEB/remi/6/56/x86_64
+baseurl = http://$IP/$WEB/remi/6/56
 enable = 1
 gpgcheck = 0
 EOF
@@ -151,7 +156,7 @@ EOF
     cat > $REPO/remi72-6.repo << EOF
 [remi72]
 name = remi72
-baseurl = http://$IP/$WEB/remi/6/72/x86_64
+baseurl = http://$IP/$WEB/remi/6/72
 enable = 1
 gpgcheck = 0
 EOF
@@ -165,7 +170,7 @@ gpgcheck = 0
 
 [remi56]
 name = remi56
-baseurl = http://$IP/$WEB/remi/7//56/x86_64
+baseurl = http://$IP/$WEB/remi/7/56
 enable = 1
 gpgcheck = 0
 EOF
@@ -173,7 +178,7 @@ EOF
     cat > $REPO/remi72-7.repo << EOF
 [remi72]
 name = remi72
-baseurl = http://$IP/$WEB/remi/7/72/x86_64
+baseurl = http://$IP/$WEB/remi/7/72
 enable = 1
 gpgcheck = 0
 EOF
@@ -220,14 +225,14 @@ EOF
     cat > $REPO/glpi-6.repo << EOF
 [glpi]
 name = glpi
-baseurl = http://$IP/glpi/6
+baseurl = http://$IP/$WEB/glpi/6
 enable = 1
 gpgcheck = 0
 EOF
     cat > $REPO/glpi-7.repo << EOF
 [glpi]
 name = glpi
-baseurl = http://$IP/glpi/7
+baseurl = http://$IP/$WEB/glpi/7
 enable = 1
 gpgcheck = 0
 EOF

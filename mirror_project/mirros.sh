@@ -85,11 +85,11 @@ case $1 in
             ;;
         createrepos )
             _create_repos_file
+            _chage_add_repos
             ;;
         httpd )
             _httpd
             links_for_mirrors
-
             ;;
 
 
@@ -113,6 +113,5 @@ case $1 in
             ;;
         * )
             RUN
-
             ;;
 esac

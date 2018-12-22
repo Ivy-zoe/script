@@ -4,7 +4,7 @@
 
 # server
 
-SERVER=192.168.10.45
+SERVER=10.0.0.10
 # Set error color
 
 Color_Text()
