@@ -87,8 +87,8 @@ case $1 in
             _create_repos_file
             _chage_add_repos
             ;;
-        httpd )
-            _httpd
+        server )
+            _mirrors_server
             links_for_mirrors
             ;;
 

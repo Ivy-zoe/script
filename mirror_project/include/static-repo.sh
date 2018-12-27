@@ -11,11 +11,28 @@ function links_for_mirrors(){
     fi
 }
 
-function _httpd(){
-    _check_command_and_yum_install httpd
-    sleep 3
-    systemctl enable httpd
-    systemctl start httpd
+CENTOS_VERSION_BY_RPM=`rpm -q --queryformat '%{VERSION}' centos-release`
+
+function _mirrors_server(){
+    if [ $CENTOS_VERSION_BY_RPM -eq 6 ];then
+        _mirrors_server_7
+    elif [[  $CENTOS_VERSION_BY_RPM -eq 7 ]]; then
+        _mirrors_server_6
+    fi
+}
+
+function _mirrors_server_7(){
+    _firewalld_httpd
+
+}
+
+function _mirrors_server_6(){
+    _no_iptables_httpd
+}
+
+function _no_iptables_httpd(){
+    service httpd start
+    chkconfig httpd on
 }
 
 function _firewalld_httpd(){
@@ -148,7 +165,7 @@ gpgcheck = 0
 
 [remi56]
 name = remi56
-baseurl = http://$IP/$WEB/remi/6/56
+baseurl = http://$IP/$WEB/remi/6/56/
 enable = 1
 gpgcheck = 0
 EOF
@@ -156,8 +173,7 @@ EOF
     cat > $REPO/remi72-6.repo << EOF
 [remi72]
 name = remi72
-baseurl = http://$IP/$WEB/remi/6/72
-enable = 1
+baseurl = http://$IP/$WEB/remi/6/72/
 gpgcheck = 0
 EOF
     cat > $REPO/remi56-7.repo << EOF
@@ -170,7 +186,7 @@ gpgcheck = 0
 
 [remi56]
 name = remi56
-baseurl = http://$IP/$WEB/remi/7/56
+baseurl = http://$IP/$WEB/remi/7/56/
 enable = 1
 gpgcheck = 0
 EOF
@@ -178,7 +194,7 @@ EOF
     cat > $REPO/remi72-7.repo << EOF
 [remi72]
 name = remi72
-baseurl = http://$IP/$WEB/remi/7/72
+baseurl = http://$IP/$WEB/remi/7/72/
 enable = 1
 gpgcheck = 0
 EOF
