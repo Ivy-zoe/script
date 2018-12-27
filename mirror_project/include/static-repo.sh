@@ -15,9 +15,9 @@ CENTOS_VERSION_BY_RPM=`rpm -q --queryformat '%{VERSION}' centos-release`
 
 function _mirrors_server(){
     if [ $CENTOS_VERSION_BY_RPM -eq 6 ];then
-        _mirrors_server_7
-    elif [[  $CENTOS_VERSION_BY_RPM -eq 7 ]]; then
         _mirrors_server_6
+    elif [[  $CENTOS_VERSION_BY_RPM -eq 7 ]]; then
+        _mirrors_server_7
     fi
 }
 
