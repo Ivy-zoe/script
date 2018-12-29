@@ -43,6 +43,7 @@ case $1 in
         ;;
     mariadb )
         _rsync_mariadb7
+        _rsync_mariadb6
         ;;
 
     zabbix6 )

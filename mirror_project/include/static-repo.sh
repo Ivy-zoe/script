@@ -58,20 +58,20 @@ function _create_repos_file(){
     cat > $REPO/centos-7.repo << EOF
 [base]
 name = base
-baseurl = http://$IP/$WEB/centos/7/os/x86_64
+baseurl = http://$IP/$WEB/centos/7/os
 enable = 1
 gpgcheck = 0
 
 [update]
 name = update
-baseurl = http://$IP/$WEB/centos/7/updates/x86_64/
+baseurl = http://$IP/$WEB/centos/7/updates
 enable = 1
 gpgcheck = 0
 
 
 [extras]
 name = extras
-baseurl = http://$IP/$WEB/centos/7/extras/x86_64/
+baseurl = http://$IP/$WEB/centos/7/extras
 enable = 1
 gpgcheck = 0
 
@@ -80,20 +80,20 @@ EOF
     cat > $REPO/centos-6.repo << EOF
 [base]
 name = base
-baseurl = http://$IP/$WEB/centos/6/os/x86_64
+baseurl = http://$IP/$WEB/centos/6/os
 enable = 1
 gpgcheck = 0
 
 [update]
 name = update
-baseurl = http://$IP/$WEB/centos/6/updates/x86_64
+baseurl = http://$IP/$WEB/centos/6/updates
 enable = 1
 gpgcheck = 0
 
 
 [extras]
 name = extras
-baseurl = http://$IP/$WEB/centos/6/extras/x86_64
+baseurl = http://$IP/$WEB/centos/6/extras
 enable = 1
 gpgcheck = 0
 EOF
@@ -103,7 +103,7 @@ EOF
     cat > $REPO/epel-7.repo << EOF
 [epel]
 name = epel
-baseurl = http://$IP/$WEB/epel/7/x86_64
+baseurl = http://$IP/$WEB/epel/7
 enable = 1
 gpgcheck = 0
 
@@ -112,7 +112,7 @@ EOF
     cat > $REPO/epel-6.repo << EOF
 [epel]
 name = epel
-baseurl = http://$IP/$WEB/epel/6/x86_64
+baseurl = http://$IP/$WEB/epel/6
 enable = 1
 gpgcheck = 0
 EOF
@@ -135,14 +135,14 @@ EOF
     cat > $REPO/mariadb-7.repo << EOF
 [mariadb]
 name = mariadb
-baseurl = http://$IP/$WEB/mariadb/7/x86_64
+baseurl = http://$IP/$WEB/mariadb/7
 enable = 1
 gpgcheck = 0
 EOF
     cat > $REPO/mariadb-6.repo << EOF
 [mariadb]
 name = mariadb
-baseurl = http://$IP/$WEB/mariadb/6/x86_64
+baseurl = http://$IP/$WEB/mariadb/6
 enable = 1
 gpgcheck = 0
 EOF
