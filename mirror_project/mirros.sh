@@ -48,13 +48,11 @@ case $1 in
     zabbix6 )
         _zabbix_6
             ;;
-        zabbix7)
+    zabbix7)
             _zabbix_7
-
             ;;
         glibc )
             _wget_glibc
-
             ;;
         mongodb)
             _mongodb_3.6
@@ -62,7 +60,6 @@ case $1 in
         nginx )
             _nginx_centos6
             ;;
-
         all )
             _rsync_CentOS7
             _rsync_CentOS6
@@ -76,6 +73,7 @@ case $1 in
             _wget_glibc
             _mongodb_3.6
             _nginx_centos6
+            _nginx_centos7
             _rsync_remi_56_7
             _rsync_remi_72_7
             _rsync_mariadb7

@@ -20,7 +20,8 @@ MONGODB6=$DATA_DIR/mongodb/6
 Mariadb7=$DATA_DIR/mariadb/7
 Mariadb6=$DATA_DIR/mariadb/6
 # Nginx
-Nginx=$DATA_DIR/nginx/6
+Nginx6=$DATA_DIR/nginx/6
+Nginx7=$DATA_DIR/nginx/7
 # REMI
 REMI6=$DATA_DIR/remi/6
 REMI7=$DATA_DIR/remi/7
@@ -69,7 +70,8 @@ function Check_directory(){
     _check_directory $ZABBIX7/non-supported/x86_64/
     _check_directory $GLIBC
     _check_directory $MONGODB6
-    _check_directory $Nginx
+    _check_directory $Nginx6
+    _check_directory $Nginx7 
     _check_directory $REPO
     _check_directory $GLPI_91
     _check_directory $GLPI_93

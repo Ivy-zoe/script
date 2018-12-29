@@ -155,6 +155,13 @@ enable = 1
 gpgcheck = 0
 EOF
 
+    cat > $REPO/nginx-7.repo << EOF
+[nginx]
+name = nginx
+baseurl = http://$IP/$WEB/nginx/7
+enable = 1
+gpgcheck = 0
+EOF
 
     cat > $REPO/remi56-6.repo << EOF
 [remi]
