@@ -102,7 +102,7 @@ EOF
 # EPEL
     cat > $REPO/epel-7.repo << EOF
 [epel]
-name = epel
+name = epel7
 baseurl = http://$IP/$WEB/epel/7
 enable = 1
 gpgcheck = 0
@@ -111,7 +111,7 @@ EOF
 
     cat > $REPO/epel-6.repo << EOF
 [epel]
-name = epel
+name = epel6
 baseurl = http://$IP/$WEB/epel/6
 enable = 1
 gpgcheck = 0
@@ -119,14 +119,14 @@ EOF
 
     cat > $REPO/mongodb-6.repo << EOF
 [mongodb]
-name = mongodb
+name = mongodb6
 baseurl = http://$IP/$WEB/mongodb/6
 enable = 1
 gpgcheck = 0
 EOF
     cat > $REPO/mongodb-7.repo << EOF
 [mongodb]
-name = mongodb
+name = mongodb7
 baseurl = http://$IP/$WEB/mongodb/7
 enable = 1
 gpgcheck = 0
@@ -134,14 +134,14 @@ EOF
 
     cat > $REPO/mariadb-7.repo << EOF
 [mariadb]
-name = mariadb
+name = mariadb7
 baseurl = http://$IP/$WEB/mariadb/7
 enable = 1
 gpgcheck = 0
 EOF
     cat > $REPO/mariadb-6.repo << EOF
 [mariadb]
-name = mariadb
+name = mariadb6
 baseurl = http://$IP/$WEB/mariadb/6
 enable = 1
 gpgcheck = 0
@@ -149,7 +149,7 @@ EOF
 
     cat > $REPO/nginx-6.repo << EOF
 [nginx]
-name = nginx
+name = nginx6
 baseurl = http://$IP/$WEB/nginx/6
 enable = 1
 gpgcheck = 0
@@ -157,7 +157,7 @@ EOF
 
     cat > $REPO/nginx-7.repo << EOF
 [nginx]
-name = nginx
+name = nginx7
 baseurl = http://$IP/$WEB/nginx/7
 enable = 1
 gpgcheck = 0
@@ -165,7 +165,7 @@ EOF
 
     cat > $REPO/remi56-6.repo << EOF
 [remi]
-name = remi
+name = remi6
 baseurl = http://$IP/$WEB/remi/6/x86_64
 enable = 1
 gpgcheck = 0
@@ -186,7 +186,7 @@ EOF
     cat > $REPO/remi56-7.repo << EOF
 
 [remi]
-name = remi
+name = remi7
 baseurl = http://$IP/$WEB/remi/7/x86_64
 enable = 1
 gpgcheck = 0
@@ -210,7 +210,7 @@ EOF
 
     cat > $REPO/zabbix-6.repo << EOF
 [zabbix]
-name = zabbix
+name = zabbix6
 baseurl = http://$IP/$WEB/zabbix/6/x86_64
 enable = 1
 gpgcheck = 0
@@ -225,7 +225,7 @@ EOF
 cat > $REPO/zabbix-7.repo << EOF
 
 [zabbix]
-name = zabbix
+name = zabbix7
 baseurl = http://$IP/$WEB/zabbix/7/x86_64
 enable = 1
 gpgcheck = 0
@@ -240,23 +240,9 @@ EOF
     cat > $REPO/glibc-6.repo << EOF
 [glibc]
 name = glibc
-baseurl = http://$IP/$WEB/GLIBC
+baseurl = http://$IP/$WEB/glibc/6
 enable = 1
 gpgcheck = 0
 EOF
 
-    cat > $REPO/glpi-6.repo << EOF
-[glpi]
-name = glpi
-baseurl = http://$IP/$WEB/glpi/6
-enable = 1
-gpgcheck = 0
-EOF
-    cat > $REPO/glpi-7.repo << EOF
-[glpi]
-name = glpi
-baseurl = http://$IP/$WEB/glpi/7
-enable = 1
-gpgcheck = 0
-EOF
 }

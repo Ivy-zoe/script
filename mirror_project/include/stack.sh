@@ -136,12 +136,12 @@ function _pinpoint(){
 }
 
 
-function _glpi9.1_centos6(){
-    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi91/x86_64/ $GLPI_91
-    _update_repos $GLPI_91
-}
+#function _glpi9.1_centos6(){
+#    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi91/x86_64/ $GLPI_91
+#    _update_repos $GLPI_91
+#}
 
-function _glpi9.3_centos6(){
-    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi93/x86_64/ $GLPI_93
-    _update_repos $GLPI_93
-}
+#function _glpi9.3_centos6(){
+#    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi93/x86_64/ $GLPI_93
+#    _update_repos $GLPI_93
+#}
