@@ -108,10 +108,16 @@ function _wget_glibc(){
     _update_repos $GLIBC
 }
 
-function _mongodb_3.6(){
-    _rsync_mirrors $Config_DIR/mongodb3.6.list $rsync_tuna/mongodb/yum/el6-3.6/	$MONGODB6
+function _mongodb_3.6_6(){
+    _rsync_mirrors $Config_DIR/mongodb3.6.list $rsync_tuna/mongodb/yum/el6-3.6/RPMS/	$MONGODB6
     _update_repos $MONGODB6
 }
+
+function _mongodb_3.6_7(){
+    _rsync_mirrors $Config_DIR/mongodb3.6.list $rsync_tuna/mongodb/yum/el7-3.6/RPMS/    $MONGODB7
+    _update_repos $MONGODB7
+}
+
 
 function _nginx_centos6(){
     _wget_incloud_file	$Config_DIR/nginx6-wget-list	$Nginx6

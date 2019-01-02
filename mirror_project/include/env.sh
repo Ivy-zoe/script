@@ -16,6 +16,7 @@ CentOS7=$DATA_DIR/centos/7
 CentOS6=$DATA_DIR/centos/6
 # Mongodb
 MONGODB6=$DATA_DIR/mongodb/6
+MONGODB7=$DATA_DIR/mongodb/7
 # Mariadb
 Mariadb7=$DATA_DIR/mariadb/7
 Mariadb6=$DATA_DIR/mariadb/6
@@ -70,6 +71,7 @@ function Check_directory(){
     _check_directory $ZABBIX7/non-supported/x86_64/
     _check_directory $GLIBC
     _check_directory $MONGODB6
+    _check_directory $MONGODB7
     _check_directory $Nginx6
     _check_directory $Nginx7 
     _check_directory $REPO
