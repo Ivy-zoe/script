@@ -83,6 +83,20 @@ REMI(){
 	curl -sS -o /etc/yum.repos.d/remi72.repo	$REMI72_REPO_URL
 }
 
+JDK(){
+	JDK_URL="http://$SERVER/mirrors/repo/jdk.repo"
+	curl -sS -o /etc/yum.repos.d/jdk.repo $JDK_URL
+}
+
+ELK(){
+	ELK_URL="http://$SERVER/mirrors/repo/elk.repo"
+	curl -sS -o /etc/yum.repos.d/elk.repo $ELK_URL
+}
+
+GLIBC(){
+	GLIBC_URL="http://$SERVER/mirrors/repo/glibc.repo"
+	curl -sS -o /etc/yum.repos.d/glibc.repo $GLIBC_URL
+}
 _HELP(){
 
     clear
@@ -103,6 +117,12 @@ _HELP(){
     echo "+---------------------------------------------------------------------------------------+"
     echo "| 7       zabbix      add zabbix repos_files"
     echo "+---------------------------------------------------------------------------------------+"
+    echo "| 8       jdk      add jdk repos_files"
+    echo "+---------------------------------------------------------------------------------------+"
+    echo "| 9       elk      add elk repos_files"
+    echo "+---------------------------------------------------------------------------------------+"
+    echo "| 10       glibc      add glibc for centos6 repos_files"
+    echo "+---------------------------------------------------------------------------------------+"
 
 }
 
@@ -115,6 +135,8 @@ case $1 in
 		MARIADB
 		NGINX
 		REMI
+		JDK
+		ELK
 		;;
 	init_base )
 		Repo_Backup
@@ -134,6 +156,15 @@ case $1 in
 	;;
 	remi )
 		REMI
+	;;
+	jdk )
+		JDK
+	;;
+	elk )
+		ELK
+	;;
+	glibc )
+		GLIBC
 	;;
 	help )
 		_HELP

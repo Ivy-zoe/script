@@ -61,6 +61,7 @@ case $1 in
             ;;
         nginx )
             _nginx_centos6
+            _nginx_centos7
             ;;
         all )
             _rsync_CentOS7

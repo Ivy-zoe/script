@@ -237,10 +237,26 @@ enable = 1
 gpgcheck = 0
 EOF
 
-    cat > $REPO/glibc-6.repo << EOF
+    cat > $REPO/glibc.repo << EOF
 [glibc]
 name = glibc
 baseurl = http://$IP/$WEB/glibc/6
+enable = 1
+gpgcheck = 0
+EOF
+
+    cat > $REPO/jdk.repo << EOF
+[jdk]
+name = jdk
+baseurl = http://$IP/$WEB/jdk
+enable = 1
+gpgcheck = 0
+EOF
+
+    cat > $REPO/elk.repo << EOF
+[elk]
+name = elk
+baseurl = http://$IP/$WEB/elk
 enable = 1
 gpgcheck = 0
 EOF
