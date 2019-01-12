@@ -261,4 +261,14 @@ enable = 1
 gpgcheck = 0
 EOF
 
+    cat > $REPO/rocky.repo << EOF
+
+[rocky]
+name = rocky
+baseurl = http://$IP/$WEB/centos/7/rocky
+enable = 1
+gpgcheck = 0
+
+EOF
+
 }

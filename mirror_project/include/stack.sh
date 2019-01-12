@@ -135,7 +135,10 @@ function _pinpoint(){
     _update_repos $pinpoint
 }
 
-
+function _openstack_r(){
+    _rsync_mirrors $Config_DIR/openstack.list $rsync_tuna/centos/7.6.1810/cloud/x86_64/openstack-rocky/ $Rocky
+    _update_repos $Rocky
+}
 #function _glpi9.1_centos6(){
 #    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi91/x86_64/ $GLPI_91
 #    _update_repos $GLPI_91
