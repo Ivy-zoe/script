@@ -1,50 +1,41 @@
 #!/bin/bash
-
-
 # env
 MIRROR=mirrors.ustc.edu.cn
 GENTOO_MIRROR=https://$MIRROR/gentoo
 STAGE_MIRROR=$GENTOO_MIRROR/releases/amd64/autobuilds
 PORTAGE_MIRROR=rsync://rsync.$MIRROR/gentoo-portage
-
 # lib
-
 function _check_directory(){
          if [  -d $1 ];then
          echo "$1 is ok!"
          else mkdir -p $1
          fi
 }
-
-function _check_dir_file_exist()
-{
-        if [ -e $1 ]; then
-                echo "Check $1 ok."
-                return 0
-                else
-                echo "Check $1 Not Found!!!"
-                return 1
-        fi
-}
-
 function _exit()
 {
 exit 9;
+}
+
+function _rm_files()
+{
+	if [ -e $1 ]; then
+		rm $1
+		echo "Check $1 ok."
+		return 0
+		else
+		echo "$1 not Found!!!"
+		return 0
+	fi
+}
+
 
 
 CPU=$(grep 'model name' /proc/cpuinfo |wc -l)
-##判断用户
-if [ `whoami` != root ];then
-	echo "please run this script on root"
-	_exit
-fi
 
 _check_directory /mnt/gentoo
 
 
-# color
-
-function color(){
+color(){
 	case $1 in 
         red)
             echo -e "\033[31m$2\033[0m"
@@ -54,8 +45,7 @@ function color(){
         ;;
     esac
 }
-
-function partition(){
+partition(){
     if (echo $1 | grep '/' > /dev/null 2>&1);then
         other=$1
     else
@@ -125,10 +115,7 @@ function partition(){
         mount $OTHER /mnt/gentoo$other
     fi
 }
-
-
-
-function prepare(){
+prepare(){
     fdisk -l
     color green "Do you want to adjust the partition ? y)yes ENTER)no"
     read tmp
@@ -165,27 +152,35 @@ function prepare(){
         read other
     done
 }
-
-function _install_file(){
+_install_file(){
 	##安装文件
 	read -p "输入y使用openRC 回车使用systemd(如果你使用gnome桌面请务必选择systemd) " INIT
 	cd /mnt/gentoo
-	rm -f index.html
+	_rm_files index.html
+	wget -q $STAGE_MIRROR/current-stage3-amd64/ 
+	LATEST=$(grep -o stage3-amd64-....................... index.html | head -1)
 	if [ "$INIT" == y ];then
 		INIT=openrc
-		LATEST=$(wget -q $STAGE_MIRROR/current-stage3-amd64/ && grep -o stage3-amd64-.........tar.bz2 index.html | head -1)
-		wget $STAGE_MIRROR/current-stage3-amd64/$LATEST
-		echo 解压中...
-		tar xjpf $LATEST --xattrs --numeric-owner
+		i
+		if [ -f $LATEST ];then 
+			echo "file is ok!"
+			tar xf $LATEST --xattrs --numeric-owner
+		else
+			echo "download file now!"
+			wget -c $STAGE_MIRROR/current-stage3-amd64/$LATEST
+			tar xf $LATEST --xattrs --numeric-owner
+		fi
+
 	else
 		INIT=systemd 
-		LATEST=$(wget -q $STAGE_MIRROR/current-stage3-amd64-systemd/ && grep -o stage3-amd64-systemd-.........tar.bz2 index.html | head -1)
-		wget $STAGE_MIRROR/current-stage3-amd64-systemd/$LATEST
-		echo 解压中...
-		tar xjpf $LATEST --xattrs --numeric-owner
+#		LATEST=$(wget -q $STAGE_MIRROR/current-stage3-amd64-systemd/ && grep -o stage3-amd64-systemd-.........tar.bz2 index.html | head -1)
+#		wget -c $STAGE_MIRROR/current-stage3-amd64-systemd/$LATEST
+#		echo 解压中...
+#		tar xf $LATEST --xattrs --numeric-owner
+		echo systemd
 	fi
 
-	rm $LATEST
+#	rm $LATEST
 
 	if [ "$BOOT" == y ];then
 		umount $boot
@@ -195,20 +190,20 @@ function _install_file(){
 
 
 
-function config_make(){
+config_make(){
 
     cat > /mnt/gentoo/etc/portage/make.conf  << EOF
 # GCC
 CHOST="x86_64-pc-linux-gnu"
 CFLAGS="-march=native -O2 -pipe"
 CXXFLAGS="${CFLAGS}"
-MAKEOPTS=\"-j$CPU\"
+MAKEOPTS="-j$CPU"
 
 # PORTAGE
 PORTDIR="/usr/portage"
 DISTDIR="${PORTDIR}/distfiles"
 PKGDIR="${PORTDIR}/packages"
-GENTOO_MIRROR=\"$GENTOO_MIRROR\"
+GENTOO_MIRRORS="http://mirrors.tuna.tsinghua.edu.cn/gentoo/"
 
 # USE
 DEV="git"
@@ -230,7 +225,7 @@ LLVM_TARGETS="X86"
 EOF
 }
 
-function _video(){
+_video(){
 	##Video Cards
 	VIDEO=6
 	while (($VIDEO!=1&&$VIDEO!=2&&$VIDEO!=3&&$VIDEO!=4&&$VIDEO!=5));do
@@ -256,24 +251,36 @@ function _video(){
 	done
 }
 
-function _mirrors(){
+_mirrors(){
 	_check_directory /mnt/gentoo/etc/portage/repos.conf
+	cat > /mnt/gentoo/etc/portage/repos.conf/gentoo.conf << EOF
 
-cat > /mnt/gentoo/etc/portage/repos.conf/gentoo.conf << EOF
+[DEFAULT]
+main-repo = gentoo
 
 [gentoo]
 location = /usr/portage
 sync-type = rsync
-#sync-uri = rsync://mirrors.tuna.tsinghua.edu.cn/gentoo-portage/
-sync-uri = rsync://rsync.mirrors.ustc.edu.cn/gentoo-portage/
+sync-uri = rsync://mirrors.tuna.tsinghua.edu.cn/gentoo-portage/
+#sync-uri = rsync://rsync.mirrors.ustc.edu.cn/gentoo-portage/
 auto-sync = yes
+sync-rsync-verify-jobs = 1
+sync-rsync-verify-metamanifest = yes
+sync-rsync-verify-max-age = 24
+sync-openpgp-key-path = /usr/share/openpgp-keys/gentoo-release.asc
+sync-openpgp-key-refresh-retry-count = 40
+sync-openpgp-key-refresh-retry-overall-timeout = 1200
+sync-openpgp-key-refresh-retry-delay-exp-base = 2
+sync-openpgp-key-refresh-retry-delay-max = 60
+sync-openpgp-key-refresh-retry-delay-mult = 4
+
 EOF
+
 }
 
 
-##Chroot
 
-function _chroot(){
+_chroot(){
 	mount -t proc /proc /mnt/gentoo/proc
 	mount --rbind /sys /mnt/gentoo/sys
 	mount --make-rslave /mnt/gentoo/sys
@@ -281,12 +288,26 @@ function _chroot(){
 	mount --make-rslave /mnt/gentoo/dev
 	rm -f /mnt/gentoo/etc/resolv.conf
 	cp /etc/resolv.conf /mnt/gentoo/etc/
-	cd root/
-	wget https://raw.githubusercontent.com/YangMame/Gentoo-Installer/master/Config.sh
-	chmod +x Config.sh
-	chroot /mnt/gentoo /root/Config.sh $FILESYSTEM $INIT $VIDEO
+#	cd /mnt/gentoo/root/
+#	wget https://raw.githubusercontent.com/slmoby/script/master/Gentoo-Install/Config.sh
+#	chmod +x Config.sh
+	_rm_files /mnt/gentoo/root/Config.sh
+	cp /root/Config.sh /mnt/gentoo/root
+	chmod +x /mnt/gentoo/root/Config.sh
+	chroot /mnt/gentoo /root/Config.sh  
 }
 
-function main(){
+# $FILESYSTEM $INIT $VIDEO
+
+main(){
+	partition
+	prepare
+	_install_file
+	config_make
+	_video
+	_mirrors
+	_chroot
 
 }
+main
+
