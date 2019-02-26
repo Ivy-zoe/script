@@ -26,3 +26,8 @@ curl -fsSL https://raw.githubusercontent.com/slmoby/script/master/docker/CentOS/
 ```sh
 curl -fsSL https://raw.githubusercontent.com/slmoby/script/master/docker/CentOS/docker.sh | bash -s config
 ```
+
+
+## local docker
+
+这个是我内网的安装脚本，因为虚拟机的源之类的都定义好了，可以直接用

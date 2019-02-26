@@ -38,7 +38,7 @@ function update(){
 }
 
 ##时区
-	function _date(){
+function _date(){
 	echo "Asia/Shanghai" > /etc/timezone
 	emerge --config sys-libs/timezone-data
 	echo "en_US.UTF-8 UTF-8
