@@ -113,6 +113,9 @@ case $1 in
             _rsync_remi_56_7
             _rsync_remi_72_7
             ;;
+        rocky )
+            _openstack_r
+            ;;
         * )
             RUN
             ;;

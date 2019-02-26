@@ -14,6 +14,8 @@ EPEL7=$DATA_DIR/epel/7
 # CentOS
 CentOS7=$DATA_DIR/centos/7
 CentOS6=$DATA_DIR/centos/6
+# Cloud
+Rocky=$CentOS7/cloud
 # Mongodb
 MONGODB6=$DATA_DIR/mongodb/6
 MONGODB7=$DATA_DIR/mongodb/7
@@ -78,6 +80,7 @@ function Check_directory(){
     _check_directory $GLPI_91
     _check_directory $GLPI_93
     _check_directory $pinpoint
+    _check_directory $Rocky
 }
 
 
