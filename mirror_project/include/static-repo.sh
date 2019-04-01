@@ -271,4 +271,16 @@ gpgcheck = 0
 
 EOF
 
+
+    cat > $REPO/docker.repo << EOF
+
+[docker]
+name = docker-ce
+baseurl = http://$IP/$WEB/docker/
+enable = 1
+gpgcheck = 0
+
+EOF
+
+
 }

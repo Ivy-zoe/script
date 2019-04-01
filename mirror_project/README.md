@@ -7,7 +7,7 @@ author:
 
 # 版本
 
-Version: 0.8-alpine
+Version: 0.9
 
 # 项目说明
 mirrors_project是为了安全考虑在局域网内部建立一个镜像站的项目，它包含了一下功能。
@@ -58,69 +58,18 @@ git clone https://github.com/slmoby/script
 
 你可以自定义修改`DATA_DIR`的位置来存放整个镜像站
 
-DATA_DIR变量位于`include/env.sh`
+DATA_DIR变量位于`mirrors.sh`
 
 一般来说只需要修改`DATA_DIR`即可
 
-默认的目录树结构如下
-
-```
-mirrors/
-├── centos
-│   ├── 6
-│   │   ├── extras
-│   │   │   └── x86_64
-│   │   ├── os
-│   │   │   └── x86_64
-│   │   └── updates
-│   │       └── x86_64
-│   └── 7
-│       ├── extras
-│       │   └── x86_64
-│       ├── os
-│       │   └── x86_64
-│       └── updates
-│           └── x86_64
-├── epel
-│   ├── 6
-│   │   └── x86_64
-│   └── 7
-│       └── x86_64
-├── glibc
-│   └── 6
-├── mariadb
-│   └── 7
-│       └── x86_64
-├── mongodb
-│   └── 6
-├── nginx
-│   └── 6
-├── remi
-│   └── 6
-│       ├── 56
-│       │   └── x86_64
-│       └── 72
-│           └── x86_64
-├── repo
-└── zabbix
-    ├── 6
-    │   ├── non-supported
-    │   │   └── x86_64
-    │   └── x86_64
-    └── 7
-        ├── non-supported
-        │   └── x86_64
-        └── x86_64
-
-44 directories
-```
 
 
-在`env.sh` 中使用了`_check_command_and_yum_install`这个函数去安装需要的软件包这个函数位于 `lib/libs.so`这个库文件中，如果你使用的是非redhat系发行版你可以手动解决软件依赖`rsync,createrepo`来去解决这个问题
+在`mirrors.sh` 中使用了`_check_command_and_yum_install`这个函数去安装需要的软件包这个函数位于 `mirrors.sh`这个主文件中，如果你使用的是非redhat系发行版你可以手动解决软件依赖`rsync,createrepo`来去解决这个问题
 
 # 库文件函数方法
 
 这里只介绍需要用到的函数
+
 
 | 函数名称                       | 参数  | 使用方法                                |
 | ------------------------------ | ----- | --------------------------------------- |
@@ -170,7 +119,7 @@ cd script/mirror_project
 
 因为内置库的缘故你可以非常简单的添加一个镜像，例子Docker的镜像站点
 
-首先在`env.sh` 中添加你的镜像站点存放位置，和web站点访问位置
+首先在`docker.sh` 中添加你的镜像站点存放位置，和web站点访问位置
 
 ```bash
 DOCKER-CE=$DATA_DIR/docker

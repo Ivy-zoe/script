@@ -1,6 +1,8 @@
 #!/bin/bash
 
 
+
+## CentOS7 base
 function _rsync_CentOS7(){
     #base
     _rsync_mirrors $Config_DIR/centos7.list $rsync_tuna/centos/7/os/x86_64/ $CentOS7/os
@@ -13,6 +15,7 @@ function _rsync_CentOS7(){
     _update_repos	$CentOS7/extras/
 }
 
+## CentOS6 base
 function _rsync_CentOS6(){
     # base
     _rsync_mirrors $Config_DIR/centos6.list $rsync_tuna/centos/6/os/x86_64 $CentOS6/os
@@ -25,6 +28,7 @@ function _rsync_CentOS6(){
     _update_repos $CentOS6/extras
 }
 
+## EPEL6
 function _rsync_EPEL6(){
     # rsync mirros
     _rsync_mirrors $Config_DIR/epel6.list $rsync_tuna/epel/6/x86_64/ $EPEL6
@@ -32,10 +36,13 @@ function _rsync_EPEL6(){
     _update_repos $EPEL6
 }
 
+## EPEL7
 function _rsync_EPEL7(){
     _rsync_mirrors $Config_DIR/epel7.list $rsync_tuna/epel/7/x86_64/ $EPEL7
     _update_repos $EPEL7
 }
+
+## Mariadb10.3 for CentOS7 
 
 function _rsync_mariadb7(){
     _rsync_mirrors $Config_DIR/mariadb.list $rsync_tuna/mariadb/yum/10.3/centos/7.4/x86_64/ $Mariadb7
@@ -43,6 +50,7 @@ function _rsync_mariadb7(){
 
 }
 
+## Mariadb10.3 for CentOS6
 function _rsync_mariadb6(){
     _rsync_mirrors $Config_DIR/mariadb.list $rsync_tuna/mariadb/yum/10.3/centos/6/x86_64/ $Mariadb6
     _update_repos $Mariadb6
@@ -50,10 +58,13 @@ function _rsync_mariadb6(){
 }
 
 
+## REMI for CentOS6
 function _rsync_remi_6(){
     _rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/6/remi/x86_64/ $REMI6/x86_64/
     _update_repos $REMI6/x86_64/
 }
+
+## REMI for CentOS6
 
 function _rsync_remi_56_6(){
     _rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/6/php56/x86_64/ $REMI6/56
@@ -61,11 +72,13 @@ function _rsync_remi_56_6(){
 
 }
 
+## REMI for CentOS7
 function _rsync_remi_72_6(){
     _rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/6/php72/x86_64/ $REMI6/72
     _update_repos $REMI6/72/
 }
 
+## REMI for CentOS7
 function _rysnc_remi_7(){
     _rsync_mirrors $Config_DIR/remi.list  $rsync_tuna/remi/enterprise/7/remi/x86_64/ $REMI7/x86_64/
     _update_repos $REMI7/x86_64
@@ -139,12 +152,10 @@ function _openstack_r(){
     _rsync_mirrors $Config_DIR/openstack.list $rsync_tuna/centos/7.6.1810/cloud/x86_64/openstack-rocky/ $Rocky
     _update_repos $Rocky
 }
-#function _glpi9.1_centos6(){
-#    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi91/x86_64/ $GLPI_91
-#    _update_repos $GLPI_91
-#}
 
-#function _glpi9.3_centos6(){
-#    _rsync_mirrors $Config_DIR/glpi.list $rsync_tuna/remi/enterprise/6/glpi93/x86_64/ $GLPI_93
-#    _update_repos $GLPI_93
-#}
+
+function _docker_ce(){
+    _rsync_mirrors $Config_DIR/docker.list $rsync_tuna/docker/yum/repo/centos7/Packages/ $DOCKER
+    _update_repos $DOCKER
+}
+
