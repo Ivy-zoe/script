@@ -12,7 +12,7 @@ docker-ce.18.09
 - 安装
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/slmoby/script/master/install-docker/CentOS/docker.sh | bash - install
+curl -fsSL https://raw.githubusercontent.com/slmoby/script/master/install-docker/CentOS/docker.sh | bash -s install
 ```
 
 - 删除Docker
