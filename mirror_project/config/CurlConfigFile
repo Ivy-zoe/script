@@ -13,10 +13,9 @@ function _wget(){
 	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/glibc2.17_for_6-wget-list
 	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/nginx7-wget-list
 	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/pinpoint-wget-list
-	cd - && cd include
+	cd -
 	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/stack.sh
 	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/stack-repos.sh
-	cd -
 }
 
 function _rsync(){
