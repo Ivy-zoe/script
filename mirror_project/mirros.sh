@@ -103,8 +103,8 @@ function _check_directory(){
 ####### Incloud files####
 #########################
 
-_source_file_exist ./include/stack.sh
-_source_file_exist ./include/static-repo.sh
+_source_file_exist ./stack.sh
+_source_file_exist ./static-repo.sh
 
 
 
