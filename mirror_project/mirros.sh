@@ -284,7 +284,7 @@ function _check_config(){
         else 
             mkdir -pv config
             mkdir -pv incloud
-            curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/CurlConfigFile | bash
+            curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/CurlConfigFile && bash -x CurlConfigFile 
         fi
 
 }
