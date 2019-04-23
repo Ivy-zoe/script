@@ -1,0 +1,42 @@
+#!/bin/bash
+
+function main(){
+	_wget
+	_rsync
+}
+
+function _wget(){
+	# glibc
+	cd config
+	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/gilbc-2.15-wget-list
+	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/nginx6-wget-list
+	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/glibc2.17_for_6-wget-list
+	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/nginx7-wget-list
+	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/pinpoint-wget-list
+	cd - || cd include
+	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/include/stack.sh
+	curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/include/stack-repos.sh
+	cd -
+}
+
+function _rsync(){
+	cd config
+	touch centos6.list 
+	touch centos7.list 
+	touch mysql.list
+	touch zabbix-for-centos6.list
+	touch zabbix-for-centos7.list
+	touch docker.list
+	touch glpi.list
+	touch epel6.list
+	touch mariadb.list
+	touch epel7.list
+	touch mongodb3.6.list
+	touch remi.list
+	echo "rsync include file is done!"
+	cd -
+}
+
+
+main
+

@@ -276,13 +276,15 @@ function RUN(){
 ####### Config file##########
 #############################
 
+
+
 function _check_config(){
         if [ -d config ];then
             echo "config direcrory is ok"
         else 
-            mkdir -p config
-            mkdir -p incloud
-            curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/CurlConfigFile.sh && bash -x CurlConfigFile.sh
+            mkdir -pv config
+            mkdir -pv incloud
+            curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/CurlConfigFile | bash
         fi
 
 }
