@@ -91,13 +91,9 @@ function _check_directory(){
          fi
 }
 
-
-
 #########################
 ### funciton end#########
 #########################
-
-
 
 #########################
 ####### Incloud files####
@@ -105,21 +101,22 @@ function _check_directory(){
 
 _source_file_exist stack.sh
 _source_file_exist static-repo.sh
+_source_file_exist php.sh
+
+#########################
+####### Incloud end######
+#########################
+
 
 
 
 #######################
 ####### env config ####
 #######################
-
-
 # env config
-
 Config_DIR=./config
 DATA_DIR=/data/mirrors
 #DATA_DIR=/Users/chaos/Desktop/tmp
-
-
 #EPEL
 EPEL6=$DATA_DIR/epel/6
 EPEL7=$DATA_DIR/epel/7
@@ -164,7 +161,6 @@ WEB=mirrors
 ## END
 
 function Check_directory(){
-
     _check_directory $DATE_DIR
     _check_directory $CentOS7/os/x86_64
     _check_directory $CentOS7/updates/x86_64/
@@ -176,10 +172,6 @@ function Check_directory(){
     _check_directory $EPEL7/x86_64
     _check_directory $Mariadb7/x86_64
     _check_directory $Mariadb6/x86_64
-    _check_directory $REMI6/56/x86_64/
-    _check_directory $REMI6/72/x86_64/
-    _check_directory $REMI7/56/x86_64/
-    _check_directory $REMI7/72/x86_64/
     _check_directory $ZABBIX6/x86_64/
     _check_directory $ZABBIX6/non-supported/x86_64/
     _check_directory $ZABBIX7/x86_64/
@@ -199,10 +191,7 @@ function Check_directory(){
 
 # rsync_url
 rsync_tuna=rsync://mirrors.tuna.tsinghua.edu.cn
-
-
 function _check_path(){
-
     _check_command_and_yum_install  rsync
     _check_command_and_yum_install  createrepo
     _check_command_and_yum_install wget
@@ -210,8 +199,6 @@ function _check_path(){
 
 ###### env config end#########
 ###############################
-
-
 
 ############ RUN #############
 ##############################
@@ -275,9 +262,6 @@ function RUN(){
 #############################
 ####### Config file##########
 #############################
-
-
-
 function _check_config(){
         if [ -d config ];then
             echo "config direcrory is ok"
@@ -285,7 +269,6 @@ function _check_config(){
             mkdir -pv config
             curl -LO https://raw.githubusercontent.com/slmoby/script/master/mirror_project/config/CurlConfigFile && bash -x CurlConfigFile 
         fi
-
 }
 
 function _check_add(){
@@ -297,10 +280,6 @@ function _check_add(){
 }
 
 ### Download file end 
-
-
-### Download incloud file
-
 #######################
 ##### Menu ############
 #######################
@@ -363,12 +342,7 @@ case $1 in
             _firewalld_httpd
             ;;
     remi )
-            _rsync_remi_6
-            _rsync_remi_56_6
-            _rsync_remi_72_6
-            _rysnc_remi_7
-            _rsync_remi_56_7
-            _rsync_remi_72_7
+            PHP
             ;;
     rocky )
             _openstack_r

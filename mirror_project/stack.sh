@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 ## CentOS7 base
 function _rsync_CentOS7(){
     #base
@@ -42,7 +40,7 @@ function _rsync_EPEL7(){
     _update_repos $EPEL7
 }
 
-## Mariadb10.3 for CentOS7 
+## Mariadb10.3 for CentOS7
 
 function _rsync_mariadb7(){
     _rsync_mirrors $Config_DIR/mariadb.list $rsync_tuna/mariadb/yum/10.3/centos/7.4/x86_64/ $Mariadb7
@@ -55,44 +53,6 @@ function _rsync_mariadb6(){
     _rsync_mirrors $Config_DIR/mariadb.list $rsync_tuna/mariadb/yum/10.3/centos/6/x86_64/ $Mariadb6
     _update_repos $Mariadb6
 
-}
-
-
-## REMI for CentOS6
-function _rsync_remi_6(){
-    _rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/6/remi/x86_64/ $REMI6/x86_64/
-    _update_repos $REMI6/x86_64/
-}
-
-## REMI for CentOS6
-
-function _rsync_remi_56_6(){
-    _rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/6/php56/x86_64/ $REMI6/56
-    _update_repos $REMI6/56/
-
-}
-
-## REMI for CentOS7
-function _rsync_remi_72_6(){
-    _rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/6/php72/x86_64/ $REMI6/72
-    _update_repos $REMI6/72/
-}
-
-## REMI for CentOS7
-function _rysnc_remi_7(){
-    _rsync_mirrors $Config_DIR/remi.list  $rsync_tuna/remi/enterprise/7/remi/x86_64/ $REMI7/x86_64/
-    _update_repos $REMI7/x86_64
-}
-
-function _rsync_remi_56_7(){
-    _rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/7/php56/x86_64/ $REMI7/56
-    _update_repos $REMI7/56/
-
-}
-
-function _rsync_remi_72_7(){
-    _rsync_mirrors $Config_DIR/remi.list $rsync_tuna/remi/enterprise/7/php72/x86_64/ $REMI7/72
-    _update_repos $REMI7/72
 }
 
 
@@ -158,4 +118,3 @@ function _docker_ce(){
     _rsync_mirrors $Config_DIR/docker.list $rsync_tuna/docker/yum/repo/centos7/Packages/ $DOCKER
     _update_repos $DOCKER
 }
-

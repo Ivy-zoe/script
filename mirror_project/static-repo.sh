@@ -163,50 +163,6 @@ enable = 1
 gpgcheck = 0
 EOF
 
-    cat > $REPO/remi56-6.repo << EOF
-[remi]
-name = remi6
-baseurl = http://$IP/$WEB/remi/6/x86_64
-enable = 1
-gpgcheck = 0
-
-[remi56]
-name = remi56
-baseurl = http://$IP/$WEB/remi/6/56/
-enable = 1
-gpgcheck = 0
-EOF
-
-    cat > $REPO/remi72-6.repo << EOF
-[remi72]
-name = remi72
-baseurl = http://$IP/$WEB/remi/6/72/
-gpgcheck = 0
-EOF
-    cat > $REPO/remi56-7.repo << EOF
-
-[remi]
-name = remi7
-baseurl = http://$IP/$WEB/remi/7/x86_64
-enable = 1
-gpgcheck = 0
-
-[remi56]
-name = remi56
-baseurl = http://$IP/$WEB/remi/7/56/
-enable = 1
-gpgcheck = 0
-EOF
-
-    cat > $REPO/remi72-7.repo << EOF
-[remi72]
-name = remi72
-baseurl = http://$IP/$WEB/remi/7/72/
-enable = 1
-gpgcheck = 0
-EOF
-
-
 
     cat > $REPO/zabbix-6.repo << EOF
 [zabbix]
